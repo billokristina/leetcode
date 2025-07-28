@@ -7,6 +7,7 @@
  - [80. Remove Duplicates from Sorted Array II](#80-remove-duplicates-from-sorted-array-ii)
  - [189. Rotate Array](#189-rotate-array)
  - [28. Find the Index of the First Occurrence in a String](#28-find-the-index-of-the-first-occurrence-in-a-string)
+ - [14. Longest Common Prefix](#14-longest-common-prefix)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -121,5 +122,36 @@ int strStr(char* haystack, char* needle) {
     }
     
     return -1;
+}
+```
+## [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
+```
+char* longestCommonPrefix(char** strs, int strsSize) {
+        if (strsSize == 0) return "";
+    
+    char* first = strs[0];
+    int prefixLen = strlen(first);
+
+    for (int i = 1; i < strsSize; i++) {
+        char* current = strs[i];
+        int j = 0;
+
+        while (j < prefixLen && current[j] != '\0' && first[j] == current[j]) {
+            j++;
+        }
+        
+      
+        prefixLen = j;
+        
+      
+        if (prefixLen == 0) break;
+    }
+    
+    char* result = (char*)malloc(prefixLen + 1);  
+    if (prefixLen > 0) {
+        strncpy(result, first, prefixLen);
+    }
+    result[prefixLen] = '\0';  
+    return result;
 }
 ```
