@@ -15,6 +15,7 @@
  - [151. Reverse Words in a String](#151-reverse-words-in-a-string)
  - [2769. Find the Maximum Achievable Number](#2769-find-the-maximum-achievable-number)
  - [2798. Number of Employees Who Met the Target](#2798-number-of-employees-who-met-the-target)
+ - [9. Palindrome Number](#9-palindrome-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -320,5 +321,28 @@ int numberOfEmployeesWhoMetTarget(int* hours, int hoursSize, int target) {
         }
     }
     return count;
+}
+```
+
+## [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
+```
+bool isPalindrome(int x) {
+    if (x < 0) {
+        return false;
+    }
+    
+    if (x != 0 && x % 10 == 0) {
+        return false;
+    }
+    
+    int reversed = 0;
+    int original = x;
+    
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x /= 10;
+    }
+    
+    return x == reversed || x == reversed / 10;
 }
 ```
