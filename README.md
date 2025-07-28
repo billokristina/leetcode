@@ -17,6 +17,7 @@
  - [2798. Number of Employees Who Met the Target](#2798-number-of-employees-who-met-the-target)
  - [9. Palindrome Number](#9-palindrome-number)
  - [3136. Valid Word](#3136-valid-word)
+ - [35. Search Insert Position](#35-search-insert-position)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -381,3 +382,24 @@ bool isValid(char* word) {
     }
 }
 ```
+
+## [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
+```
+int searchInsert(int* nums, int numsSize, int target) {
+    int left = 0;
+    int right = numsSize - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return left;
+}
