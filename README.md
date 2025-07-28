@@ -12,6 +12,7 @@
  - [387. First Unique Character in a String](#387-first-unique-character-in-a-string)
  - [383. Ransom Note](#383-ransom-note)
  - [344. Reverse String](#344-reverse-string)
+ - [151. Reverse Words in a String](#151-reverse-words-in-a-string)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -235,5 +236,67 @@ void reverseString(char* s, int sSize) {
         left++;
         right--;
     }
+}
+```
+
+## [151. Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description/)
+```
+char* reverseWords(char* s) {
+    int len = strlen(s);
+    if (len == 0) return s;
+    
+    char** words = (char**)malloc(len * sizeof(char*));
+    int word_count = 0;
+    
+    int i = 0;
+    while (i < len) {
+        while (i < len && s[i] == ' ') i++;
+        
+        if (i >= len) break;
+        
+        int start = i;
+
+        while (i < len && s[i] != ' ') i++;
+        
+        int word_len = i - start;
+        words[word_count] = (char*)malloc((word_len + 1) * sizeof(char));
+        strncpy(words[word_count], s + start, word_len);
+        words[word_count][word_len] = '\0';
+        word_count++;
+    }
+    
+    if (word_count == 0) {
+        free(words);
+        char* result = (char*)malloc(1 * sizeof(char));
+        result[0] = '\0';
+        return result;
+    }
+    
+    int total_len = 0;
+    for (int i = 0; i < word_count; i++) {
+        total_len += strlen(words[i]);
+        if (i < word_count - 1) total_len += 1;
+    }
+    
+    char* result = (char*)malloc((total_len + 1) * sizeof(char));
+    int pos = 0;
+    
+    for (int i = word_count - 1; i >= 0; i--) {
+        int word_len = strlen(words[i]);
+        strncpy(result + pos, words[i], word_len);
+        pos += word_len;
+        if (i > 0) {
+            result[pos] = ' ';
+            pos++;
+        }
+    }
+    result[pos] = '\0';
+    
+    for (int i = 0; i < word_count; i++) {
+        free(words[i]);
+    }
+    free(words);
+    
+    return result;
 }
 ```
