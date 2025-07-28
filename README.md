@@ -26,6 +26,7 @@
  - [136. Single Number](#136-single-number)
  - [171. Excel Sheet Column Number](#171-excel-sheet-column-number)
  - [168. Excel Sheet Column Title](#168-excel-sheet-column-title)
+ - [268. Missing Number](#268-missing-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -559,5 +560,19 @@ char* convertToTitle(int columnNumber) {
     }
 
     return result;
+}
+```
+
+## [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
+```c
+int missingNumber(int* nums, int numsSize) {
+    int expected_sum = numsSize * (numsSize + 1) / 2;
+    
+    int actual_sum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        actual_sum += nums[i];
+    }
+    
+    return expected_sum - actual_sum;
 }
 ```
