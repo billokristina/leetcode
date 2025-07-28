@@ -23,6 +23,7 @@
  - [88. Merge Sorted Array](#88-merge-sorted-array)
  - [1672. Richest Customer Wealth](#1672-richest-customer-wealth)
  - [412. Fizz Buzz](#412-fizz-buzz)
+ - [136. Single Number](#136-single-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -509,5 +510,17 @@ char** fizzBuzz(int n, int* returnSize) {
     }
 
     return answer;
+}
+```
+
+## [136. Single Number](https://leetcode.com/problems/single-number/description/)
+```c
+int singleNumber(int* nums, int numsSize) {
+    int result = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        result ^= nums[i];
+    }
+    return result;
 }
 ```
