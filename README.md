@@ -27,6 +27,7 @@
  - [171. Excel Sheet Column Number](#171-excel-sheet-column-number)
  - [168. Excel Sheet Column Title](#168-excel-sheet-column-title)
  - [268. Missing Number](#268-missing-number)
+ - [202. Happy Number](#202-happy-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -574,5 +575,25 @@ int missingNumber(int* nums, int numsSize) {
     }
     
     return expected_sum - actual_sum;
+}
+```
+
+## [202. Happy Number]()
+```c
+bool isHappy(int n) {
+    while (n != 1) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        n = sum;
+
+        if (n == 4) {
+            return false;
+        }
+    }
+    return true;
 }
 ```
