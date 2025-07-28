@@ -21,6 +21,7 @@
  - [66. Plus One](#66-plus-one)
  - [69. Sqrt(x)](#69-sqrtx)
  - [88. Merge Sorted Array](#88-merge-sorted-array)
+ - [1672. Richest Customer Wealth](#1672-richest-customer-wealth)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -466,5 +467,23 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
     while (j >= 0) {
         nums1[k--] = nums2[j--];
     }
+}
+```
+
+## [1672. Richest Customer Wealth](https://leetcode.com/problems/richest-customer-wealth/description/)
+```c
+int maximumWealth(int** accounts, int accountsSize, int* accountsColSize) {
+    int max = -1;
+    for (int i = 0; i < accountsSize; i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < accountsColSize[i]; j++)
+        {
+            sum += accounts[i][j];
+        }
+        if (sum > max)
+            max = sum;
+    }
+    return max;
 }
 ```
