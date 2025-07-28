@@ -22,6 +22,7 @@
  - [69. Sqrt(x)](#69-sqrtx)
  - [88. Merge Sorted Array](#88-merge-sorted-array)
  - [1672. Richest Customer Wealth](#1672-richest-customer-wealth)
+ - [412. Fizz Buzz](#412-fizz-buzz)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -485,5 +486,28 @@ int maximumWealth(int** accounts, int accountsSize, int* accountsColSize) {
             max = sum;
     }
     return max;
+}
+```
+
+## [412. Fizz Buzz](https://leetcode.com/problems/fizz-buzz/description/)
+```c
+char** fizzBuzz(int n, int* returnSize) {
+    char** answer = (char**)malloc(n * sizeof(char*));
+    *returnSize = n;
+
+    for (int i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            answer[i - 1] = strdup("FizzBuzz");
+        } else if (i % 3 == 0) {
+            answer[i - 1] = strdup("Fizz");
+        } else if (i % 5 == 0) {
+            answer[i - 1] = strdup("Buzz");
+        } else {
+            answer[i - 1] = (char*)malloc(12 * sizeof(char));
+            sprintf(answer[i - 1], "%d", i);
+        }
+    }
+
+    return answer;
 }
 ```
