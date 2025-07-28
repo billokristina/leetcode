@@ -28,6 +28,7 @@
  - [168. Excel Sheet Column Title](#168-excel-sheet-column-title)
  - [268. Missing Number](#268-missing-number)
  - [202. Happy Number](#202-happy-number)
+ - [231. Power of Two](#231-power-of-two)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -595,5 +596,20 @@ bool isHappy(int n) {
         }
     }
     return true;
+}
+```
+
+## [231. Power of Two]()
+```c
+bool isPowerOfTwo(int n) {
+    if (n == 1)
+        return true;
+    long long res = 1;
+    while (res < n){
+        res *= 2;
+        if(res == n)
+            return true;
+    }
+    return false;
 }
 ```
