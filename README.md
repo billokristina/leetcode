@@ -8,6 +8,7 @@
  - [189. Rotate Array](#189-rotate-array)
  - [28. Find the Index of the First Occurrence in a String](#28-find-the-index-of-the-first-occurrence-in-a-string)
  - [14. Longest Common Prefix](#14-longest-common-prefix)
+ - [58. Length of Last Word](#58-length-of-last-word)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -153,5 +154,24 @@ char* longestCommonPrefix(char** strs, int strsSize) {
     }
     result[prefixLen] = '\0';  
     return result;
+}
+```
+
+## [58. Length of Last Word](https://leetcode.com/problems/length-of-last-word/description/)
+```
+int lengthOfLastWord(char* s) {
+    int length = 0;
+    int i = strlen(s) - 1;
+    
+    while (i >= 0 && s[i] == ' ') {
+        i--;
+    }
+
+    while (i >= 0 && s[i] != ' ') {
+        length++;
+        i--;
+    }
+    
+    return length;
 }
 ```
