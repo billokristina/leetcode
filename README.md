@@ -18,16 +18,17 @@
  - [9. Palindrome Number](#9-palindrome-number)
  - [3136. Valid Word](#3136-valid-word)
  - [35. Search Insert Position](#35-search-insert-position)
+ - [66. Plus One](#66-plus-one)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
-```
+```c
 int sum(int num1, int num2) {
     return num1+num2;
 }
 ```
 
 ## [27. Remove Element](https://leetcode.com/problems/remove-element/description/)
-```
+```c
 int removeElement(int* nums, int numsSize, int val) {
     int k = 0;
 
@@ -43,7 +44,7 @@ int removeElement(int* nums, int numsSize, int val) {
 ```
 
 ## [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
-```
+```c
 int removeDuplicates(int* nums, int numsSize) {
         if (numsSize == 0) return 0;
 
@@ -61,7 +62,7 @@ int removeDuplicates(int* nums, int numsSize) {
 ```
 
 ## [80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
-```
+```c
 int removeDuplicates(int* nums, int numsSize) {
         if (numsSize <= 2) {
         return numsSize;
@@ -81,7 +82,7 @@ int removeDuplicates(int* nums, int numsSize) {
 ```
 
 ## [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/)
-```
+```c
 void rotate(int* nums, int numsSize, int k) {
     k = k % numsSize;
     if (k == 0) return;
@@ -102,7 +103,7 @@ void rotate(int* nums, int numsSize, int k) {
 ```
 
 ## [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
-```
+```c
 int strStr(char* haystack, char* needle) {
     if (*needle == '\0') {
         return 0;
@@ -135,7 +136,7 @@ int strStr(char* haystack, char* needle) {
 }
 ```
 ## [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
-```
+```c
 char* longestCommonPrefix(char** strs, int strsSize) {
         if (strsSize == 0) return "";
     
@@ -167,7 +168,7 @@ char* longestCommonPrefix(char** strs, int strsSize) {
 ```
 
 ## [58. Length of Last Word](https://leetcode.com/problems/length-of-last-word/description/)
-```
+```c
 int lengthOfLastWord(char* s) {
     int length = 0;
     int i = strlen(s) - 1;
@@ -186,7 +187,7 @@ int lengthOfLastWord(char* s) {
 ```
 
 ## [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/description/)
-```
+```c
 int firstUniqChar(char* s) {
     int count[26] = {0};
     
@@ -205,7 +206,7 @@ int firstUniqChar(char* s) {
 ```
 
 ## [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
-```
+```c
 bool canConstruct(char* ransomNote, char* magazine) {
     int alph[26]= {0};
     int len1 = strlen(ransomNote);
@@ -228,7 +229,7 @@ bool canConstruct(char* ransomNote, char* magazine) {
 ```
 
 ## [344. Reverse String](https://leetcode.com/problems/reverse-string/description/)
-```
+```c
 void reverseString(char* s, int sSize) {
     int left = 0;
     int right = sSize - 1;
@@ -245,7 +246,7 @@ void reverseString(char* s, int sSize) {
 ```
 
 ## [151. Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description/)
-```
+```c
 char* reverseWords(char* s) {
     int len = strlen(s);
     if (len == 0) return s;
@@ -307,14 +308,14 @@ char* reverseWords(char* s) {
 ```
 
 ## [2769. Find the Maximum Achievable Number](https://leetcode.com/problems/find-the-maximum-achievable-number/description/)
-```
+```c
 int theMaximumAchievableX(int num, int t) {
     return num + 2 * t;
 }
 ```
 
 ## [2798. Number of Employees Who Met the Target](https://leetcode.com/problems/number-of-employees-who-met-the-target/description/)
-```
+```c
 int numberOfEmployeesWhoMetTarget(int* hours, int hoursSize, int target) {
     int count = 0;
     for (int i = 0; i < hoursSize; i++) {
@@ -327,7 +328,7 @@ int numberOfEmployeesWhoMetTarget(int* hours, int hoursSize, int target) {
 ```
 
 ## [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
-```
+```c
 bool isPalindrome(int x) {
     if (x < 0) {
         return false;
@@ -350,7 +351,7 @@ bool isPalindrome(int x) {
 ```
 
 ## [3136. Valid Word](https://leetcode.com/problems/valid-word/description/)
-```
+```c
 bool isValid(char* word) {
     int length = 0;
     bool has_vowel = false;
@@ -384,7 +385,7 @@ bool isValid(char* word) {
 ```
 
 ## [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
-```
+```c
 int searchInsert(int* nums, int numsSize, int target) {
     int left = 0;
     int right = numsSize - 1;
@@ -403,3 +404,28 @@ int searchInsert(int* nums, int numsSize, int target) {
     
     return left;
 }
+```
+
+## [66. Plus One](https://leetcode.com/problems/plus-one/)
+```c
+int* plusOne(int* digits, int digitsSize, int* returnSize) {
+    for (int i = digitsSize - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i]++;
+            *returnSize = digitsSize;
+            int* result = malloc(digitsSize * sizeof(int));
+            memcpy(result, digits, digitsSize * sizeof(int));
+            return result;
+        }
+        digits[i] = 0;
+    }
+    
+    *returnSize = digitsSize + 1;
+    int* result = malloc((digitsSize + 1) * sizeof(int));
+    result[0] = 1;
+    for (int i = 1; i < digitsSize + 1; i++) {
+        result[i] = 0;
+    }
+    return result;
+}
+```
