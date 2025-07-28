@@ -14,6 +14,7 @@
  - [344. Reverse String](#344-reverse-string)
  - [151. Reverse Words in a String](#151-reverse-words-in-a-string)
  - [2769. Find the Maximum Achievable Number](#2769-find-the-maximum-achievable-number)
+ - [2798. Number of Employees Who Met the Target](#2798-number-of-employees-who-met-the-target)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -301,9 +302,23 @@ char* reverseWords(char* s) {
     return result;
 }
 ```
+
 ## [2769. Find the Maximum Achievable Number](https://leetcode.com/problems/find-the-maximum-achievable-number/description/)
 ```
 int theMaximumAchievableX(int num, int t) {
     return num + 2 * t;
+}
+```
+
+## [2798. Number of Employees Who Met the Target](https://leetcode.com/problems/number-of-employees-who-met-the-target/description/)
+```
+int numberOfEmployeesWhoMetTarget(int* hours, int hoursSize, int target) {
+    int count = 0;
+    for (int i = 0; i < hoursSize; i++) {
+        if (hours[i] >= target) {
+            count++;
+        }
+    }
+    return count;
 }
 ```
