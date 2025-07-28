@@ -5,6 +5,7 @@
  - [27. Remove Element](#27-remove-element)
  - [26. Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
  - [80. Remove Duplicates from Sorted Array II](#80-remove-duplicates-from-sorted-array-ii)
+ - [189. Rotate Array](#189-rotate-array)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 
@@ -67,5 +68,26 @@ int removeDuplicates(int* nums, int numsSize) {
     }
 
     return k;
+}
+```
+
+## [189. Rotate Array](https://leetcode.com/problems/rotate-array/description/)
+```
+void rotate(int* nums, int numsSize, int k) {
+    k = k % numsSize;
+    if (k == 0) return;
+
+    int temp[k];
+    for (int i = 0; i < k; i++) {
+        temp[i] = nums[numsSize - k + i];
+    }
+
+    for (int i = numsSize - 1; i >= k; i--) {
+        nums[i] = nums[i - k];
+    }
+
+    for (int i = 0; i < k; i++) {
+        nums[i] = temp[i];
+    }
 }
 ```
