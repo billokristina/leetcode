@@ -6,9 +6,9 @@
  - [26. Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
  - [80. Remove Duplicates from Sorted Array II](#80-remove-duplicates-from-sorted-array-ii)
  - [189. Rotate Array](#189-rotate-array)
+ - [28. Find the Index of the First Occurrence in a String](#28-find-the-index-of-the-first-occurrence-in-a-string)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
-
 ```
 int sum(int num1, int num2) {
     return num1+num2;
@@ -16,7 +16,6 @@ int sum(int num1, int num2) {
 ```
 
 ## [27. Remove Element](https://leetcode.com/problems/remove-element/description/)
-
 ```
 int removeElement(int* nums, int numsSize, int val) {
     int k = 0;
@@ -33,7 +32,6 @@ int removeElement(int* nums, int numsSize, int val) {
 ```
 
 ## [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
-
 ```
 int removeDuplicates(int* nums, int numsSize) {
         if (numsSize == 0) return 0;
@@ -89,5 +87,39 @@ void rotate(int* nums, int numsSize, int k) {
     for (int i = 0; i < k; i++) {
         nums[i] = temp[i];
     }
+}
+```
+
+## [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
+```
+int strStr(char* haystack, char* needle) {
+    if (*needle == '\0') {
+        return 0;
+    }
+    
+    int haystack_len = strlen(haystack);
+    int needle_len = strlen(needle);
+    
+
+    if (needle_len > haystack_len) {
+        return -1;
+    }
+    
+
+    for (int i = 0; i <= haystack_len - needle_len; i++) {
+        int j;
+
+        for (j = 0; j < needle_len; j++) {
+            if (haystack[i + j] != needle[j]) {
+                break;
+            }
+        }
+
+        if (j == needle_len) {
+            return i;
+        }
+    }
+    
+    return -1;
 }
 ```
