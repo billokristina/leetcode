@@ -11,6 +11,7 @@
  - [58. Length of Last Word](#58-length-of-last-word)
  - [387. First Unique Character in a String](#387-first-unique-character-in-a-string)
  - [383. Ransom Note](#383-ransom-note)
+ - [344. Reverse String](#344-reverse-string)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -217,5 +218,22 @@ bool canConstruct(char* ransomNote, char* magazine) {
         }
     }
     return true;
+}
+```
+
+## [344. Reverse String](https://leetcode.com/problems/reverse-string/description/)
+```
+void reverseString(char* s, int sSize) {
+    int left = 0;
+    int right = sSize - 1;
+    
+    while (left < right) {
+        char temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
+        
+        left++;
+        right--;
+    }
 }
 ```
