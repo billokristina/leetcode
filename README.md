@@ -10,6 +10,7 @@
  - [14. Longest Common Prefix](#14-longest-common-prefix)
  - [58. Length of Last Word](#58-length-of-last-word)
  - [387. First Unique Character in a String](#387-first-unique-character-in-a-string)
+ - [383. Ransom Note](#383-ransom-note)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -193,5 +194,28 @@ int firstUniqChar(char* s) {
     }
     
     return -1;
+}
+```
+
+## [383. Ransom Note](https://leetcode.com/problems/ransom-note/description/)
+```
+bool canConstruct(char* ransomNote, char* magazine) {
+    int alph[26]= {0};
+    int len1 = strlen(ransomNote);
+    int len2 = strlen(magazine);
+
+    if(len1>len2)
+        return false;
+    
+    for (int i = 0; i<len2; i++){
+        alph[magazine[i]-97]++;
+    }
+    for (int i = 0; i<len1; i++){
+        alph[ransomNote[i]-97]--;
+        if (alph[ransomNote[i]-97]<0){
+            return false;
+        }
+    }
+    return true;
 }
 ```
