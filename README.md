@@ -19,6 +19,7 @@
  - [3136. Valid Word](#3136-valid-word)
  - [35. Search Insert Position](#35-search-insert-position)
  - [66. Plus One](#66-plus-one)
+ - [69. Sqrt(x)](#69-sqrtx)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -429,3 +430,21 @@ int* plusOne(int* digits, int digitsSize, int* returnSize) {
     return result;
 }
 ```
+
+## [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
+```c
+int mySqrt(int x) {
+    if (x == 0)
+        return x;
+    for (long long i = 0; i <= x; i++)
+    {
+        if ((i * i) > x)
+            return i - 1;
+        if ((i * i) == x)
+            return i;
+    }
+    return x;
+}
+```
+
+## []
