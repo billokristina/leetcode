@@ -13,6 +13,7 @@
  - [383. Ransom Note](#383-ransom-note)
  - [344. Reverse String](#344-reverse-string)
  - [151. Reverse Words in a String](#151-reverse-words-in-a-string)
+ - [2769. Find the Maximum Achievable Number](#2769-find-the-maximum-achievable-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -298,5 +299,11 @@ char* reverseWords(char* s) {
     free(words);
     
     return result;
+}
+```
+## [2769. Find the Maximum Achievable Number](https://leetcode.com/problems/find-the-maximum-achievable-number/description/)
+```
+int theMaximumAchievableX(int num, int t) {
+    return num + 2 * t;
 }
 ```
