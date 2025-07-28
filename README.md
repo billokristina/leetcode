@@ -20,6 +20,7 @@
  - [35. Search Insert Position](#35-search-insert-position)
  - [66. Plus One](#66-plus-one)
  - [69. Sqrt(x)](#69-sqrtx)
+ - [88. Merge Sorted Array](#88-merge-sorted-array)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -447,4 +448,23 @@ int mySqrt(int x) {
 }
 ```
 
-## []
+## [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
+```c
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+    int i = m - 1;
+    int j = n - 1;
+    int k = m + n - 1;
+
+    while (i >= 0 && j >= 0) {
+        if (nums1[i] > nums2[j]) {
+            nums1[k--] = nums1[i--];
+        } else {
+            nums1[k--] = nums2[j--];
+        }
+    }
+
+    while (j >= 0) {
+        nums1[k--] = nums2[j--];
+    }
+}
+```
