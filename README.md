@@ -16,6 +16,7 @@
  - [2769. Find the Maximum Achievable Number](#2769-find-the-maximum-achievable-number)
  - [2798. Number of Employees Who Met the Target](#2798-number-of-employees-who-met-the-target)
  - [9. Palindrome Number](#9-palindrome-number)
+ - [3136. Valid Word](#3136-valid-word)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -344,5 +345,39 @@ bool isPalindrome(int x) {
     }
     
     return x == reversed || x == reversed / 10;
+}
+```
+
+## [3136. Valid Word](https://leetcode.com/problems/valid-word/description/)
+```
+bool isValid(char* word) {
+    int length = 0;
+    bool has_vowel = false;
+    bool has_consonant = false;
+    bool has_valid_chars = true;
+
+    for (int i = 0; word[i] != '\0'; i++) {
+        char c = word[i];
+        length++;
+
+        if (!(isdigit(c) || isalpha(c))) {
+            has_valid_chars = false;
+        }
+
+        if (isalpha(c)) {
+            char lower_c = tolower(c);
+            if (lower_c == 'a' || lower_c == 'e' || lower_c == 'i' || lower_c == 'o' || lower_c == 'u') {
+                has_vowel = true;
+            } else {
+                has_consonant = true;
+            }
+        }
+    }
+
+    if (length >= 3 && has_vowel && has_consonant && has_valid_chars) {
+        return true;
+    } else {
+        return false;
+    }
 }
 ```
