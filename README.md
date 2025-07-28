@@ -25,6 +25,7 @@
  - [412. Fizz Buzz](#412-fizz-buzz)
  - [136. Single Number](#136-single-number)
  - [171. Excel Sheet Column Number](#171-excel-sheet-column-number)
+ - [168. Excel Sheet Column Title](#168-excel-sheet-column-title)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -537,3 +538,26 @@ int titleToNumber(char* columnTitle) {
 }
 ```
 
+## [168. Excel Sheet Column Title](https://leetcode.com/problems/excel-sheet-column-title/description/)
+```c
+char* convertToTitle(int columnNumber) {
+    char* result = (char*)malloc(8 * sizeof(char));
+    int index = 0;
+
+    while (columnNumber > 0) {
+        columnNumber--;
+        int remainder = columnNumber % 26;
+        result[index++] = 'A' + remainder;
+        columnNumber /= 26;
+    }
+    result[index] = '\0';
+
+    for (int i = 0; i < index / 2; i++) {
+        char temp = result[i];
+        result[i] = result[index - 1 - i];
+        result[index - 1 - i] = temp;
+    }
+
+    return result;
+}
+```
