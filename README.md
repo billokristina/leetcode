@@ -24,6 +24,7 @@
  - [1672. Richest Customer Wealth](#1672-richest-customer-wealth)
  - [412. Fizz Buzz](#412-fizz-buzz)
  - [136. Single Number](#136-single-number)
+ - [171. Excel Sheet Column Number](#171-excel-sheet-column-number)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
@@ -524,3 +525,15 @@ int singleNumber(int* nums, int numsSize) {
     return result;
 }
 ```
+
+## [171. Excel Sheet Column Number](https://leetcode.com/problems/excel-sheet-column-number/submissions/1711065523/)
+```c
+int titleToNumber(char* columnTitle) {
+    int result = 0;
+    for (int i = 0; columnTitle[i] != '\0'; i++) {
+        result = result * 26 + (columnTitle[i] - 'A' + 1);
+    }
+    return result;
+}
+```
+
