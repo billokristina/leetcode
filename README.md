@@ -1,35 +1,5 @@
 # репозиторий для публикации моих решений задач с платформы leetcode
 
-## содержание
- - [2235. Add Two Integers](#2235-add-two-integers)
- - [27. Remove Element](#27-remove-element)
- - [26. Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
- - [80. Remove Duplicates from Sorted Array II](#80-remove-duplicates-from-sorted-array-ii)
- - [189. Rotate Array](#189-rotate-array)
- - [28. Find the Index of the First Occurrence in a String](#28-find-the-index-of-the-first-occurrence-in-a-string)
- - [14. Longest Common Prefix](#14-longest-common-prefix)
- - [58. Length of Last Word](#58-length-of-last-word)
- - [387. First Unique Character in a String](#387-first-unique-character-in-a-string)
- - [383. Ransom Note](#383-ransom-note)
- - [344. Reverse String](#344-reverse-string)
- - [151. Reverse Words in a String](#151-reverse-words-in-a-string)
- - [2769. Find the Maximum Achievable Number](#2769-find-the-maximum-achievable-number)
- - [2798. Number of Employees Who Met the Target](#2798-number-of-employees-who-met-the-target)
- - [9. Palindrome Number](#9-palindrome-number)
- - [3136. Valid Word](#3136-valid-word)
- - [35. Search Insert Position](#35-search-insert-position)
- - [66. Plus One](#66-plus-one)
- - [69. Sqrt(x)](#69-sqrtx)
- - [88. Merge Sorted Array](#88-merge-sorted-array)
- - [1672. Richest Customer Wealth](#1672-richest-customer-wealth)
- - [412. Fizz Buzz](#412-fizz-buzz)
- - [136. Single Number](#136-single-number)
- - [171. Excel Sheet Column Number](#171-excel-sheet-column-number)
- - [168. Excel Sheet Column Title](#168-excel-sheet-column-title)
- - [268. Missing Number](#268-missing-number)
- - [202. Happy Number](#202-happy-number)
- - [231. Power of Two](#231-power-of-two)
-
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```c
 int sum(int num1, int num2) {
