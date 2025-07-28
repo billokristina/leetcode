@@ -9,6 +9,7 @@
  - [28. Find the Index of the First Occurrence in a String](#28-find-the-index-of-the-first-occurrence-in-a-string)
  - [14. Longest Common Prefix](#14-longest-common-prefix)
  - [58. Length of Last Word](#58-length-of-last-word)
+ - [387. First Unique Character in a String](#387-first-unique-character-in-a-string)
 
 ## [2235. Add Two Integers](https://leetcode.com/problems/add-two-integers/description/)
 ```
@@ -173,5 +174,24 @@ int lengthOfLastWord(char* s) {
     }
     
     return length;
+}
+```
+
+## [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/description/)
+```
+int firstUniqChar(char* s) {
+    int count[26] = {0};
+    
+    for (int i = 0; s[i] != '\0'; i++) {
+        count[s[i] - 'a']++;
+    }
+
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (count[s[i] - 'a'] == 1) {
+            return i;
+        }
+    }
+    
+    return -1;
 }
 ```
