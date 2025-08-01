@@ -633,3 +633,17 @@ bool isPerfectSquare(int num) {
     return false;   
 }
 ```
+
+## [389. Find the Difference](https://leetcode.com/problems/find-the-difference/description/)
+```c
+char findTheDifference(char* s, char* t) {
+    char result = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        result ^= s[i];
+    }
+    for (int i = 0; t[i] != '\0'; i++) {
+        result ^= t[i];
+    }
+    return result;
+}
+```
