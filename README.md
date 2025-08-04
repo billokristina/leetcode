@@ -695,3 +695,23 @@ int thirdMax(int* nums, int numsSize) {
     }
 }
 ```
+
+## [434. Number of Segments in a String](https://leetcode.com/problems/number-of-segments-in-a-string/description/)
+```c
+int countSegments(char* s) {
+    int count = 0;
+    bool in_segment = false;      
+    while (*s) {
+        if (*s != ' ') {
+            if (!in_segment) {
+                count++;
+                in_segment = true;
+            }
+        } else {
+            in_segment = false;
+        }
+        s++;      
+    }
+    return count;
+}
+```
