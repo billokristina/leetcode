@@ -751,3 +751,23 @@ bool isUgly(int n) {
     return n == 1;
 }
 ```
+
+## [258. Add Digits](https://leetcode.com/problems/add-digits/description/)
+```c
+int addDigits(int num) {
+    if (num >= 0 && num <= 9)
+        return num;
+    int sum = 0;
+    while (num > 9)
+    {
+        while (num > 0)
+        {
+            sum += num % 10;
+            num /= 10;
+        }
+        num = sum;
+        sum = 0;
+    }
+    return num;
+}
+```
