@@ -795,3 +795,31 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     return NULL;
 }
 ```
+
+## [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
+```c
+bool isPalindrome(char* s) {
+    if (s == NULL) return false;
+    
+    int left = 0;
+    int right = strlen(s) - 1;
+    
+    while (left < right) {
+        while (left < right && !isalnum(s[left])) {
+            left++;
+        }
+        while (left < right && !isalnum(s[right])) {
+            right--;
+        }
+        
+        if (tolower(s[left]) != tolower(s[right])) {
+            return false;
+        }
+        
+        left++;
+        right--;
+    }
+    
+    return true;
+}
+```
