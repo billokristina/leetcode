@@ -867,3 +867,27 @@ bool isAnagram(char* s, char* t) {
     return true;
 }
 ```
+
+## [507. Perfect Number](https://leetcode.com/problems/perfect-number/description/)
+```c
+bool checkPerfectNumber(int num) {
+    if (num <= 1) {
+        return false;
+    }
+
+    int sum = 1;
+    int sqrt_num = (int)sqrt(num);
+
+    for (int i = 2; i <= sqrt_num; i++) {
+        if (num % i == 0) {
+            sum += i;
+            int complement = num / i;
+            if (complement != i) {
+                sum += complement;
+            }
+        }
+    }
+
+    return sum == num;
+}
+```
