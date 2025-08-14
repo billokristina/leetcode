@@ -906,3 +906,25 @@ int hammingDistance(int x, int y) {
     return distance;
 }
 ```
+
+## [2264. Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string/description/?envType=daily-question&envId=2025-08-14)
+```c
+char* largestGoodInteger(char* num) {
+    char* result = malloc(4 * sizeof(char));
+    if (result == NULL) return NULL;
+    
+    result[0] = '\0';
+    int len = strlen(num);
+    
+    for (int i = 0; i <= len - 3; i++) {
+        if (num[i] == num[i + 1] && num[i] == num[i + 2]) {
+            if (result[0] == '\0' || num[i] > result[0]) {
+                result[0] = result[1] = result[2] = num[i];
+                result[3] = '\0';
+            }
+        }
+    }
+    
+    return result;
+}
+```
