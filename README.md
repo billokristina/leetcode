@@ -928,3 +928,19 @@ char* largestGoodInteger(char* num) {
     return result;
 }
 ```
+
+## [342. Power of Four](https://leetcode.com/problems/power-of-four/description/?envType=daily-question&envId=2025-08-15)
+```c
+bool isPowerOfFour(int n) {
+    if (n == 1)
+        return true;
+    long long res = 1;
+    while (res <= n)
+    {
+        res *= 4;
+        if (res == n)
+            return true;
+    }
+    return false;
+}
+```
