@@ -944,3 +944,25 @@ bool isPowerOfFour(int n) {
     return false;
 }
 ```
+
+## [1323. Maximum 69 Number](https://leetcode.com/problems/maximum-69-number/description/?envType=daily-question&envId=2025-08-16)
+```c
+int maximum69Number (int num) {
+    int temp = num;
+    int pos = -1;
+    int power = 1;
+    
+    for (int i = 0; temp > 0; i++) {
+        if (temp % 10 == 6) {
+            pos = i;
+        }
+        temp /= 10;
+    }
+
+    if (pos != -1) {
+        num += 3 * (int)pow(10, pos);
+    }
+    
+    return num;
+}
+```
