@@ -1007,3 +1007,24 @@ int firstBadVersion(int n) {
     return left;
 }
 ```
+
+## [2016. Maximum Difference Between Increasing Elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements/description/)
+```c
+int maximumDifference(int* nums, int numsSize) {
+    int min_so_far = nums[0];
+    int max_diff = -1;
+    
+    for (int j = 1; j < numsSize; j++) {
+        if (nums[j] > min_so_far) {
+            int current_diff = nums[j] - min_so_far;
+            if (current_diff > max_diff) {
+                max_diff = current_diff;
+            }
+        } else {
+            min_so_far = nums[j];
+        }
+    }
+    
+    return max_diff;
+}
+```
