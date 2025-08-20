@@ -1028,3 +1028,31 @@ int maximumDifference(int* nums, int numsSize) {
     return max_diff;
 }
 ```
+
+## [1299. Replace Elements with Greatest Element on Right Side](https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/description/)
+```c
+int* replaceElements(int* arr, int arrSize, int* returnSize) {
+    int* result = (int*)malloc(arrSize * sizeof(int));
+    
+    *returnSize = arrSize;
+    
+    if (arrSize == 1) {
+        result[0] = -1;
+        return result;
+    }
+    
+    int max_right = -1;
+    
+    for (int i = arrSize - 1; i >= 0; i--) {
+        int current = arr[i];
+        
+        result[i] = max_right;
+        
+        if (current > max_right) {
+            max_right = current;
+        }
+    }
+    
+    return result;
+}
+```
