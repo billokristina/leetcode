@@ -1056,3 +1056,26 @@ int* replaceElements(int* arr, int arrSize, int* returnSize) {
     return result;
 }
 ```
+
+## [374. Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/description/)
+```c
+int guessNumber(int n){
+    int left = 1;
+    int right = n;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        int result = guess(mid);
+        
+        if (result == 0) {
+            return mid;
+        } else if (result == -1) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return -1;
+}
+```
