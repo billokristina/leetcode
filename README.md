@@ -1079,3 +1079,18 @@ int guessNumber(int n){
     return -1;
 }
 ```
+
+## [326. Power of Three](https://leetcode.com/problems/power-of-three/description/)
+```c
+bool isPowerOfThree(int n) {
+    if (n == 1)
+        return true;
+    long long res = 1;
+    while (res < n){
+        res *= 3;
+        if(res == n)
+            return true;
+    }
+    return false;
+}
+```
