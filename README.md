@@ -1094,3 +1094,21 @@ bool isPowerOfThree(int n) {
     return false;
 }
 ```
+
+## [1903. Largest Odd Number in String](https://leetcode.com/problems/largest-odd-number-in-string/description/)
+```c
+char* largestOddNumber(char* num) {
+    int n = strlen(num);
+    
+    for (int i = n - 1; i >= 0; i--) {
+        if ((num[i] - '0') % 2 != 0) {
+            char* result = malloc((i + 2) * sizeof(char));
+            strncpy(result, num, i + 1);
+            result[i + 1] = '\0';
+            return result;
+        }
+    }
+    
+    return "";
+}
+```
