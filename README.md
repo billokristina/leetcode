@@ -1188,3 +1188,25 @@ int strStr(char* haystack, char* needle) {
     return -1;
 }
 ```
+
+## [459. Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/description/)
+```c
+bool repeatedSubstringPattern(char* s) {
+    int n = strlen(s);
+    for (int i = 1; i <= n / 2; i++) {
+        if (n % i != 0) continue;
+        
+        bool valid = true;
+        for (int j = i; j < n; j++) {
+            if (s[j] != s[j % i]) {
+                valid = false;
+                break;
+            }
+        }
+        if (valid) {
+            return true;
+        }
+    }
+    return false;
+}
+```
