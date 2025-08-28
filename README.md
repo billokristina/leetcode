@@ -1210,3 +1210,23 @@ bool repeatedSubstringPattern(char* s) {
     return false;
 }
 ```
+
+## [2351. First Letter to Appear Twice](https://leetcode.com/problems/first-letter-to-appear-twice/description/)
+```c
+char repeatedCharacter(char* s) {
+    int len = strlen(s);
+    int mas[26] = {0};
+    int min_sec_ind = len;
+    for (int i = 0; i < len; i++)
+    {
+        if (mas[s[i] - 'a'] == 0)
+            mas[s[i] - 'a'] = 1;
+        else
+        {
+            if (i < min_sec_ind)
+                return s[i];
+        }
+    }
+    return s[1];
+}
+```
