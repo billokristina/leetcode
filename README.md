@@ -1230,3 +1230,41 @@ char repeatedCharacter(char* s) {
     return s[1];
 }
 ```
+
+## [1160. Find Words That Can Be Formed by Characters](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/description/)
+```c
+int countCharacters(char** words, int wordsSize, char* chars) {
+    int total_length = 0;
+    int char_count[26] = {0};
+    
+    for (int i = 0; chars[i] != '\0'; i++) {
+        char_count[chars[i] - 'a']++;
+    }
+    
+    for (int i = 0; i < wordsSize; i++) {
+        char* word = words[i];
+        int word_len = strlen(word);
+        int temp_count[26];
+        int is_good = 1;
+        
+        memcpy(temp_count, char_count, sizeof(char_count));
+        
+        for (int j = 0; j < word_len; j++) {
+            int index = word[j] - 'a';
+            
+            if (temp_count[index] <= 0) {
+                is_good = 0;
+                break;
+            }
+            
+            temp_count[index]--;
+        }
+        
+        if (is_good) {
+            total_length += word_len;
+        }
+    }
+    
+    return total_length;
+}
+```
