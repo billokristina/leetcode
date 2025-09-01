@@ -1305,3 +1305,36 @@ int minOperations(int* nums, int numsSize, int k) {
     return res;
 }
 ```
+
+## [2843. Count Symmetric Integers](https://leetcode.com/problems/count-symmetric-integers/description/)
+```c
+int countSymmetricIntegers(int low, int high) {
+    int count = 0;
+    for (int num = low; num <= high; num++) {
+        int temp = num;
+        int digits = 0;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        if (digits % 2 != 0) {
+            continue;
+        }
+        int firstHalfSum = 0;
+        int secondHalfSum = 0;
+        temp = num;
+        for (int i = 0; i < digits / 2; i++) {
+            secondHalfSum += temp % 10;
+            temp /= 10;
+        }
+        for (int i = 0; i < digits / 2; i++) {
+            firstHalfSum += temp % 10;
+            temp /= 10;
+        }
+        if (firstHalfSum == secondHalfSum) {
+            count++;
+        }
+    }
+    return count;
+}
+```
