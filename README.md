@@ -1338,3 +1338,31 @@ int countSymmetricIntegers(int low, int high) {
     return count;
 }
 ```
+
+## [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
+```c
+int* sortedSquares(int* nums, int numsSize, int* returnSize) {
+    *returnSize = numsSize;
+    int* result = (int*)malloc(numsSize * sizeof(int));
+    if (result == NULL) return NULL;
+    
+    int left = 0;
+    int right = numsSize - 1;
+    int index = numsSize - 1;
+    
+    while (left <= right) {
+        int left_sq = nums[left] * nums[left];
+        int right_sq = nums[right] * nums[right];
+        
+        if (left_sq >= right_sq) {
+            result[index--] = left_sq;
+            left++;
+        } else {
+            result[index--] = right_sq;
+            right--;
+        }
+    }
+    
+    return result;
+}
+```
