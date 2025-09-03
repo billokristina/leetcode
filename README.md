@@ -1366,3 +1366,32 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 ```
+
+## [2525. Categorize Box According to Criteria](https://leetcode.com/problems/categorize-box-according-to-criteria/description/)
+```c
+char* categorizeBox(int length, int width, int height, int mass) {
+    bool isBulky = false;
+    
+    if (length >= 10000 || width >= 10000 || height >= 10000) {
+        isBulky = true;
+    }
+    else {
+        long long volume = (long long)length * width * height;
+        if (volume >= 1000000000) {
+            isBulky = true;
+        }
+    }
+    
+    bool isHeavy = (mass >= 100);
+    
+    if (isBulky && isHeavy) {
+        return "Both";
+    } else if (!isBulky && !isHeavy) {
+        return "Neither";
+    } else if (isBulky && !isHeavy) {
+        return "Bulky";
+    } else {
+        return "Heavy";
+    }
+}
+```
