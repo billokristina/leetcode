@@ -1395,3 +1395,18 @@ char* categorizeBox(int length, int width, int height, int mass) {
     }
 }
 ```
+
+## [3158. Find the XOR of Numbers Which Appear Twice](https://leetcode.com/problems/find-the-xor-of-numbers-which-appear-twice/description/)
+```c
+int duplicateNumbersXOR(int* nums, int numsSize) {
+    int counter[50] = {0};
+    int result = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        counter[nums[i] - 1]++;
+        if (counter[nums[i] - 1] > 1)
+            result ^= nums[i];
+    }
+    return result;
+}
+```
