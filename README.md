@@ -1410,3 +1410,49 @@ int duplicateNumbersXOR(int* nums, int numsSize) {
     return result;
 }
 ```
+
+## [2194. Cells in a Range on an Excel Sheet](https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet/description/)
+```c
+char** cellsInRange(char* s, int* returnSize) {
+    // Парсим входную строку
+    char start_col = s[0];  // Первый столбец (например, 'K')
+    char start_row = s[1];  // Первая строка (например, '1')
+    char end_col = s[3];    // Конечный столбец (например, 'L')
+    char end_row = s[4];    // Конечная строка (например, '2')
+    
+    // Преобразуем символы строк в числа
+    int start_row_num = start_row - '0';
+    int end_row_num = end_row - '0';
+    
+    // Вычисляем количество столбцов и строк
+    int num_cols = end_col - start_col + 1;
+    int num_rows = end_row_num - start_row_num + 1;
+    
+    // Общее количество ячеек
+    int total_cells = num_cols * num_rows;
+    *returnSize = total_cells;
+    
+    // Выделяем память для массива строк
+    char** result = (char**)malloc(total_cells * sizeof(char*));
+    
+    int index = 0;
+    
+    // Проходим по всем столбцам от начального до конечного
+    for (char col = start_col; col <= end_col; col++) {
+        // Проходим по всем строкам от начальной до конечной
+        for (char row_char = start_row; row_char <= end_row; row_char++) {
+            // Выделяем память для каждой ячейки (3 символа: буква + цифра + нуль-терминатор)
+            result[index] = (char*)malloc(3 * sizeof(char));
+            
+            // Формируем строку ячейки
+            result[index][0] = col;      // Столбец (буква)
+            result[index][1] = row_char; // Строка (цифра)
+            result[index][2] = '\0';     // Конец строки
+            
+            index++;
+        }
+    }
+    
+    return result;   
+}
+```
