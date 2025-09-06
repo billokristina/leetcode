@@ -1456,3 +1456,40 @@ char** cellsInRange(char* s, int* returnSize) {
     return result;   
 }
 ```
+
+## [3471. Find the Largest Almost Missing Integer](https://leetcode.com/problems/find-the-largest-almost-missing-integer/description/)
+```c
+int largestInteger(int* nums, int numsSize, int k) {
+    // Создаем массив для подсчета количества подмассивов для каждого числа
+    // Поскольку числа в диапазоне [0, 50], нам нужно 51 элемент
+    int count[51] = {0}; // Инициализируем все элементы нулями
+    
+    // Проходим по всем возможным подмассивам длины k
+    for (int i = 0; i <= numsSize - k; i++) {
+        // Создаем временный массив для отслеживания уникальных чисел в текущем подмассиве
+        bool seen[51] = {false};
+        
+        // Проходим по элементам текущего подмассива
+        for (int j = i; j < i + k; j++) {
+            int num = nums[j];
+            // Если число еще не встречалось в этом подмассиве
+            if (!seen[num]) {
+                seen[num] = true; // Помечаем как встреченное
+                count[num]++;     // Увеличиваем счетчик для этого числа
+            }
+        }
+    }
+    
+    // Ищем наибольшее число, которое встречается ровно в одном подмассиве
+    int result = -1;
+    for (int num = 0; num <= 50; num++) {
+        if (count[num] == 1) {
+            if (num > result) {
+                result = num;
+            }
+        }
+    }
+    
+    return result;
+}
+```
