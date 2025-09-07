@@ -1493,3 +1493,47 @@ int largestInteger(int* nums, int numsSize, int k) {
     return result;
 }
 ```
+
+## [1945. Sum of Digits of String After Convert](https://leetcode.com/problems/sum-of-digits-of-string-after-convert/description/)
+```c
+int getLucky(char* s, int k) {
+    // Шаг 1: Преобразование букв в их числовые значения
+    int numStr[1000]; // Буфер для числовых значений
+    int numStrLength = 0;
+    
+    // Проходим по каждой букве в строке
+    for (int i = 0; s[i] != '\0'; i++) {
+        int letterValue = s[i] - 'a' + 1; // 'a' -> 1, 'b' -> 2, ..., 'z' -> 26
+        
+        // Разбиваем двузначные числа на отдельные цифры
+        if (letterValue >= 10) {
+            numStr[numStrLength++] = letterValue / 10; // Первая цифра
+            numStr[numStrLength++] = letterValue % 10; // Вторая цифра
+        } else {
+            numStr[numStrLength++] = letterValue; // Однозначное число
+        }
+    }
+    
+    // Шаг 2: Вычисляем начальную сумму цифр
+    long long currentValue = 0;
+    for (int i = 0; i < numStrLength; i++) {
+        currentValue += numStr[i];
+    }
+    
+    // Шаг 3: Повторяем операцию суммирования цифр k-1 раз
+    // (первое суммирование уже сделано выше)
+    for (int transform = 1; transform < k; transform++) {
+        long long newValue = 0;
+        
+        // Суммируем цифры текущего числа
+        while (currentValue > 0) {
+            newValue += currentValue % 10; // Берем последнюю цифру
+            currentValue /= 10;           // Убираем последнюю цифру
+        }
+        
+        currentValue = newValue;
+    }
+    
+    return (int)currentValue;
+}
+```
