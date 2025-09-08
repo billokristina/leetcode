@@ -1537,3 +1537,18 @@ int getLucky(char* s, int k) {
     return (int)currentValue;
 }
 ```
+
+## [2520. Count the Digits That Divide a Number](https://leetcode.com/problems/count-the-digits-that-divide-a-number/description/)
+```c
+int countDigits(int num) {
+    int count = 0;
+    int tmp = num;
+    while (tmp > 0)
+    {
+        if (num % (tmp % 10) == 0)
+            count++;
+        tmp /= 10;
+    }
+    return count;
+}
+```
