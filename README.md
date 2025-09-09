@@ -1552,3 +1552,48 @@ int countDigits(int num) {
     return count;
 }
 ```
+
+## [762. Prime Number of Set Bits in Binary Representation](https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/)
+```c
+// Функция для подсчета количества единичных битов в числе
+int countSetBits(int n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;  // Проверяем младший бит
+        n >>= 1;         // Сдвигаем число вправо
+    }
+    return count;
+}
+
+// Функция проверки, является ли число простым
+bool isPrime(int n) {
+    if (n <= 1) return false;    // 0 и 1 не простые
+    if (n == 2) return true;     // 2 - простое
+    if (n % 2 == 0) return false; // Четные числа больше 2 не простые
+    
+    // Проверяем делители до квадратного корня из n
+    for (int i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int countPrimeSetBits(int left, int right) {
+    int count = 0;
+    
+    // Проходим по всем числам в диапазоне [left, right]
+    for (int num = left; num <= right; num++) {
+        // Подсчитываем количество единичных битов
+        int setBits = countSetBits(num);
+        
+        // Проверяем, является ли это количество простым числом
+        if (isPrime(setBits)) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+```
