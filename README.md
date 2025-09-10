@@ -1597,3 +1597,25 @@ int countPrimeSetBits(int left, int right) {
     return count;
 }
 ```
+
+## [3146. Permutation Difference between Two Strings](https://leetcode.com/problems/permutation-difference-between-two-strings/description/)
+```c
+int findPermutationDifference(char* s, char* t) {
+    int diff = 0;
+    int s_index[26] = {0}; // Массив для хранения индексов символов в строке s
+    
+    // Заполняем массив индексами из строки s
+    for (int i = 0; s[i] != '\0'; i++) {
+        s_index[s[i] - 'a'] = i; // Сохраняем индекс для каждого символа
+    }
+    
+    // Проходим по строке t и вычисляем разницу
+    for (int i = 0; t[i] != '\0'; i++) {
+        char c = t[i];
+        int s_pos = s_index[c - 'a']; // Получаем позицию символа в s
+        diff += abs(s_pos - i); // Суммируем абсолютную разницу
+    }
+    
+    return diff;
+}
+```
