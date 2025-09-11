@@ -1619,3 +1619,26 @@ int findPermutationDifference(char* s, char* t) {
     return diff;
 }
 ```
+
+## [2859. Sum of Values at Indices With K Set Bits](https://leetcode.com/problems/sum-of-values-at-indices-with-k-set-bits/description/)
+```c
+int count_bits(int n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
+
+int sumIndicesWithKSetBits(int *nums, int numsSize, int k)
+{
+    int result = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (count_bits(i) == k)
+            result += nums[i];
+    }
+    return result;
+}
+```
