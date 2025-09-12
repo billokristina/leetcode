@@ -1642,3 +1642,37 @@ int sumIndicesWithKSetBits(int *nums, int numsSize, int k)
     return result;
 }
 ```
+
+## [2733. Neither Minimum nor Maximum](https://leetcode.com/problems/neither-minimum-nor-maximum/description/)
+```c
+int findNonMinOrMax(int* nums, int numsSize) {
+    // Если в массиве меньше 3 элементов, невозможно найти число,
+    // которое не является ни минимумом, ни максимумом
+    if (numsSize < 3) {
+        return -1;
+    }
+    
+    int min = nums[0];
+    int max = nums[0];
+    
+    // Находим минимальное и максимальное значения
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] < min) {
+            min = nums[i];
+        }
+        if (nums[i] > max) {
+            max = nums[i];
+        }
+    }
+    
+    // Ищем любое число, которое не является ни минимумом, ни максимумом
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] != min && nums[i] != max) {
+            return nums[i];
+        }
+    }
+    
+    // На всякий случай возвращаем -1 (хотя теоретически сюда не должны дойти)
+    return -1;
+}
+```
