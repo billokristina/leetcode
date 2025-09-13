@@ -1676,3 +1676,31 @@ int findNonMinOrMax(int* nums, int numsSize) {
     return -1;
 }
 ```
+
+## [2119. A Number After a Double Reversal](https://leetcode.com/problems/a-number-after-a-double-reversal/description/)
+```c
+int reverseNumber(int num)
+{
+    int result = 0;
+    while (num > 0)
+    {
+        result = result * 10 + num % 10;
+        num /= 10;
+    }
+    return result;
+}
+
+bool isSameAfterReversals(int num)
+{
+    if (num == 0)
+        return true;
+    if (num % 10 == 0)
+        return false;
+
+    int revers1 = reverseNumber(num);
+    int revers2 = reverseNumber(revers1);
+    if (revers2 == num)
+        return true;
+    return false;
+}
+```
