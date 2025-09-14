@@ -1704,3 +1704,26 @@ bool isSameAfterReversals(int num)
     return false;
 }
 ```
+
+## [2160. Minimum Sum of Four Digit Number After Splitting Digits](https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits/description/)
+```c
+int minimumSum(int num) {
+    int arr[4] = {num % 10, (num / 10) % 10, (num / 100) % 10, num / 1000};
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = i + 1; j < 4; j++)
+        {
+            if (arr[j] < arr[i])
+            {
+                int tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+    int new1 = arr[0] * 10 + arr[2];
+    int new2 = arr[1] * 10 + arr[3];
+
+    return new1 + new2;
+}
+```
