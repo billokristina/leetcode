@@ -1727,3 +1727,32 @@ int minimumSum(int num) {
     return new1 + new2;
 }
 ```
+
+## [1935. Maximum Number of Words You Can Type](https://leetcode.com/problems/maximum-number-of-words-you-can-type/description/?envType=daily-question&envId=2025-09-15)
+```c
+int canBeTypedWords(char* text, char* brokenLetters) {
+    char alphabet[26] = {0};
+    int count = 0;
+    int len_text = strlen(text);
+    int len_broken = strlen(brokenLetters);
+    for (int i = 0; i < len_broken; i++)
+    {
+        alphabet[brokenLetters[i] - 'a'] = 1;
+    }
+    for (int i = 0; i < len_text && text[i] != '\0'; i++)
+    {
+        int good = 1;
+        while (text[i] != ' ' && i < len_text)
+        {
+            if (alphabet[text[i] - 'a'])
+            {
+                good = 0;
+            }
+            i++;
+        }
+        if (good)
+            count++;
+    }
+    return count;
+}
+```
