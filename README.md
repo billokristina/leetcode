@@ -1756,3 +1756,17 @@ int canBeTypedWords(char* text, char* brokenLetters) {
     return count;
 }
 ```
+
+## [3498. Reverse Degree of a String](https://leetcode.com/problems/reverse-degree-of-a-string/description/)
+```c
+int reverseDegree(char *s)
+{
+    int len = strlen(s);
+    int sum = 0;
+    for (int i = 0; i < len; i++)
+    {
+        sum += (i + 1) * (26 - (s[i] - 'a'));
+    }
+    return sum;
+}
+```
