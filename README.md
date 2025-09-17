@@ -1770,3 +1770,16 @@ int reverseDegree(char *s)
     return sum;
 }
 ```
+
+## [2255. Count Prefixes of a Given String](https://leetcode.com/problems/count-prefixes-of-a-given-string/description/)
+```c
+int countPrefixes(char** words, int wordsSize, char* s) {
+    int result = 0;
+    for (int i = 0; i < wordsSize; i++)
+    {
+        if (!strncmp(words[i], s, strlen(words[i])))
+            result++;
+    }
+    return result;
+}
+```
