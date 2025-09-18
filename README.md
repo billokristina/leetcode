@@ -1783,3 +1783,68 @@ int countPrefixes(char** words, int wordsSize, char* s) {
     return result;
 }
 ```
+
+## [2465. Number of Distinct Averages](https://leetcode.com/problems/number-of-distinct-averages/description/)
+```c
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    int swapped;
+    for (i = 0; i < n - 1; i++)
+    {
+        swapped = 0;
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+        if (swapped == 0)
+            break;
+    }
+}
+
+int distinctAverages(int *nums, int numsSize)
+{
+    int result = 0;
+    
+    bubbleSort(nums, numsSize);
+    
+    int min_index = 0;
+    int max_index = numsSize - 1;
+
+    double *mid_nums = (double *)malloc((numsSize / 2) * sizeof(double));
+    if (mid_nums == NULL)
+        return -1;
+
+    int i = 0;
+    while (min_index < max_index)
+    {
+        mid_nums[i++] = (nums[min_index++] + nums[max_index--]) / 2.0;
+    }
+
+    for (int j = 0; j < i; j++)
+    {
+        if (mid_nums[j] == -1.0) continue;
+        for (int k = j + 1; k < i; k++)
+        {
+            if (mid_nums[j] == mid_nums[k])
+                mid_nums[k] = -1.0;
+        }
+    }
+
+    for (int j = 0; j < i; j++)
+    {
+        if (mid_nums[j] != -1.0)
+            result++;
+    }
+
+    free(mid_nums);
+    return result;
+}
+
+```
