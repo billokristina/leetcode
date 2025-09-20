@@ -1863,3 +1863,19 @@ int countOperations(int num1, int num2) {
     return count;
 }
 ```
+
+## [2529. Maximum Count of Positive Integer and Negative Integer](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/description/)
+```c
+int maximumCount(int* nums, int numsSize) {
+    int pos = 0;
+    int neg = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] < 0)
+            neg++;
+        if (nums[i] > 0)
+            pos++;
+    }
+    return pos > neg ? pos : neg;
+}
+```
