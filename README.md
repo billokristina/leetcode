@@ -1879,3 +1879,15 @@ int maximumCount(int* nums, int numsSize) {
     return pos > neg ? pos : neg;
 }
 ```
+
+## [744. Find Smallest Letter Greater Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/description/)
+```c
+char nextGreatestLetter(char* letters, int lettersSize, char target) {
+    for (int i = 0; i < lettersSize; i++)
+    {
+        if (letters[i] > target)
+            return letters[i];
+    }
+    return letters[0];
+}
+```
