@@ -1891,3 +1891,22 @@ char nextGreatestLetter(char* letters, int lettersSize, char target) {
     return letters[0];
 }
 ```
+
+## [3178. Find the Child Who Has the Ball After K Seconds](https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds/description/)
+```c
+int numberOfChild(int n, int k) {
+    int pos = 0;      // начальная позиция мяча — ребенок 0
+    int direction = 1; // направление передачи, 1 — вправо, -1 — влево
+
+    for (int i = 0; i < k; i++) {
+        pos += direction;
+
+        // меняем направление, если мяч у одного из концов очереди
+        if (pos == 0 || pos == n - 1) {
+            direction = -direction;
+        }
+    }
+
+    return pos;
+}
+```
