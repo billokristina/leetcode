@@ -1910,3 +1910,27 @@ int numberOfChild(int n, int k) {
     return pos;
 }
 ```
+
+## [2595. Number of Even and Odd Bits](https://leetcode.com/problems/number-of-even-and-odd-bits/description/)
+```c
+int* evenOddBit(int n, int* returnSize) {
+    // Выделяем память для результата
+    int* arr = (int*)malloc(2 * sizeof(int));
+    arr[0] = 0; // even - четные индексы
+    arr[1] = 0; // odd - нечетные индексы
+    
+    int index = 0;
+    while(n > 0) {
+        if(index % 2 == 0)
+            arr[0] += n & 1;  // Четные индексы
+        else
+            arr[1] += n & 1;  // Нечетные индексы
+        
+        index++;
+        n = n >> 1;  // Сдвиг вправо
+    }
+    
+    *returnSize = 2;  // Устанавливаем размер возвращаемого массива
+    return arr;
+}
+```
