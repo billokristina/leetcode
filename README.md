@@ -1946,33 +1946,16 @@ int convertTime(char* current, char* correct) {
         diff = min_co - min_cu;
     else
         diff = (24 * 60 - min_cu) + min_co;
-    while (diff != 0)
-    {
-        int flag = 0;
-        if (diff >= 60)
-        {
-            diff -= 60;
-            count++;
-            flag = 1;
-        }
-        if (diff >= 15 && !flag)
-        {
-            diff -= 15;
-            count++;
-            flag = 1;
-        }
-        if (diff >= 5 && !flag)
-        {
-            diff -= 5;
-            count++;
-            flag = 1;
-        }
-        if (diff >= 1 && !flag)
-        {
-            diff -= 1;
-            count++;
-        }
-    }
+    count += diff / 60;
+    diff %= 60;
+
+    count += diff / 15;
+    diff %= 15;
+
+    count += diff / 5;
+    diff %= 5;
+
+    count += diff;
     return count;
 }
 ```
