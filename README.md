@@ -1934,3 +1934,45 @@ int* evenOddBit(int n, int* returnSize) {
     return arr;
 }
 ```
+
+## [2224. Minimum Number of Operations to Convert Time](https://leetcode.com/problems/minimum-number-of-operations-to-convert-time/description/)
+```c
+int convertTime(char* current, char* correct) {
+    int count = 0;
+    int min_cu = ((current[0] - '0') * 10 + (current[1] - '0')) * 60 + ((current[3] - '0') * 10 + (current[4] - '0'));
+    int min_co = ((correct[0] - '0') * 10 + (correct[1] - '0')) * 60 + ((correct[3] - '0') * 10 + (correct[4] - '0'));
+    int diff = 0;
+    if (min_co >= min_cu)
+        diff = min_co - min_cu;
+    else
+        diff = (24 * 60 - min_cu) + min_co;
+    while (diff != 0)
+    {
+        int flag = 0;
+        if (diff >= 60)
+        {
+            diff -= 60;
+            count++;
+            flag = 1;
+        }
+        if (diff >= 15 && !flag)
+        {
+            diff -= 15;
+            count++;
+            flag = 1;
+        }
+        if (diff >= 5 && !flag)
+        {
+            diff -= 5;
+            count++;
+            flag = 1;
+        }
+        if (diff >= 1 && !flag)
+        {
+            diff -= 1;
+            count++;
+        }
+    }
+    return count;
+}
+```
