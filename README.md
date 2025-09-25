@@ -1959,3 +1959,25 @@ int convertTime(char* current, char* correct) {
     return count;
 }
 ```
+
+## [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
+```c
+int pivotIndex(int* nums, int numsSize) {
+    int total = 0;
+    int left_sum = 0;
+    
+    // Считаем сумму всех элементов массива
+    for (int i = 0; i < numsSize; i++) {
+        total += nums[i];
+    }
+
+    // Проходим по массиву и проверяем условие опорного индекса
+    for (int i = 0; i < numsSize; i++) {
+        // Сумма справа равна: total - left_sum - nums[i]
+        if (left_sum == total - left_sum - nums[i])
+            return i;
+        left_sum += nums[i];
+    }
+    return -1;
+}
+```
