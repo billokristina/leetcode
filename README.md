@@ -1981,3 +1981,31 @@ int pivotIndex(int* nums, int numsSize) {
     return -1;
 }
 ```
+
+## [2855. Minimum Right Shifts to Sort the Array](https://leetcode.com/problems/minimum-right-shifts-to-sort-the-array/description/)
+```c
+int minimumRightShifts(int* nums, int numsSize) {
+    int count = 0;
+    int pivot = -1;
+
+    // Поиск разрыва: где последовательность перестаёт быть возрастающей
+    for (int i = 0; i + 1 < numsSize; i++) {
+        if (nums[i] > nums[i + 1]) {
+            count++;
+            pivot = i;
+        }
+    }
+
+    // Если разрывов нет, массив уже отсортирован
+    if (count == 0)
+        return 0;
+
+    // Если разрывов больше одного, отсортировать сдвигами невозможно
+    // Или если последний элемент больше первого (нарушает цикл сортировки)
+    if (count > 1 || nums[numsSize - 1] > nums[0])
+        return -1;
+
+    // Если разрыв один, вернуть количество нужных сдвигов
+    return numsSize - 1 - pivot;
+}
+```
