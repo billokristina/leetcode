@@ -2009,3 +2009,40 @@ int minimumRightShifts(int* nums, int numsSize) {
     return numsSize - 1 - pivot;
 }
 ```
+
+## [1422. Maximum Score After Splitting a String](https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/)
+```c
+int maxScore(char* s) {
+    int len = strlen(s);
+    int max_score = 0;
+    
+    // Проходим по всем возможным точкам разделения
+    // от первого символа до предпоследнего
+    for (int i = 1; i < len; i++) {
+        int zeros_left = 0;
+        int ones_right = 0;
+        
+        // Считаем нули в левой части (от 0 до i-1)
+        for (int j = 0; j < i; j++) {
+            if (s[j] == '0') {
+                zeros_left++;
+            }
+        }
+        
+        // Считаем единицы в правой части (от i до конца)
+        for (int j = i; j < len; j++) {
+            if (s[j] == '1') {
+                ones_right++;
+            }
+        }
+        
+        // Обновляем максимальный балл
+        int current_score = zeros_left + ones_right;
+        if (current_score > max_score) {
+            max_score = current_score;
+        }
+    }
+    
+    return max_score;
+}
+```
