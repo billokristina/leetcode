@@ -2046,3 +2046,29 @@ int maxScore(char* s) {
     return max_score;
 }
 ```
+
+## [2605. Form Smallest Number From Two Digit Arrays](https://leetcode.com/problems/form-smallest-number-from-two-digit-arrays/description/)
+```c
+int minNumber(int* nums1, int nums1Size, int* nums2, int nums2Size) {
+     int min1 = 10;
+    int min2 = 10;
+    int common_min = 10;
+    int digits[10] = {0};
+    
+    for (int i = 0; i < nums1Size; i++) {
+        if (nums1[i] < min1) min1 = nums1[i];
+        digits[nums1[i]] = 1;
+    }
+    
+    for (int i = 0; i < nums2Size; i++) {
+        if (nums2[i] < min2) min2 = nums2[i];
+        if (digits[nums2[i]] && nums2[i] < common_min) {
+            common_min = nums2[i];
+        }
+    }
+    
+    if (common_min != 10) return common_min;
+    
+    return (min1 < min2) ? (min1 * 10 + min2) : (min2 * 10 + min1);
+}
+```
