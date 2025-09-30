@@ -2072,3 +2072,28 @@ int minNumber(int* nums1, int nums1Size, int* nums2, int nums2Size) {
     return (min1 < min2) ? (min1 * 10 + min2) : (min2 * 10 + min1);
 }
 ```
+
+## [2357. Make Array Zero by Subtracting Equal Amounts]()
+```c
+int minimumOperations(int* nums, int numsSize) {
+    // Создаем массив для отслеживания уникальных ненулевых чисел
+    int count[101] = {0}; // так как числа от 0 до 100
+    
+    // Подсчитываем уникальные ненулевые числа
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] > 0) {
+            count[nums[i]] = 1;
+        }
+    }
+    
+    // Считаем количество уникальных ненулевых чисел
+    int uniqueCount = 0;
+    for (int i = 1; i <= 100; i++) {
+        if (count[i] == 1) {
+            uniqueCount++;
+        }
+    }
+    
+    return uniqueCount;
+}
+```
