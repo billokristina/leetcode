@@ -2097,3 +2097,39 @@ int minimumOperations(int* nums, int numsSize) {
     return uniqueCount;
 }
 ```
+
+## [1869. Longer Contiguous Segments of Ones than Zeros](https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/description/)
+```c
+bool checkZeroOnes(char* s) {
+    int max_ones = 0;  // Максимальная длина отрезка из единиц
+    int max_zeros = 0; // Максимальная длина отрезка из нулей
+    int current_ones = 0;  // Текущая длина отрезка из единиц
+    int current_zeros = 0; // Текущая длина отрезка из нулей
+    
+    // Проходим по всем символам строки
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == '1') {
+            // Если текущий символ '1', увеличиваем счетчик единиц
+            current_ones++;
+            current_zeros = 0; // Сбрасываем счетчик нулей
+            
+            // Обновляем максимум для единиц
+            if (current_ones > max_ones) {
+                max_ones = current_ones;
+            }
+        } else { // s[i] == '0'
+            // Если текущий символ '0', увеличиваем счетчик нулей
+            current_zeros++;
+            current_ones = 0; // Сбрасываем счетчик единиц
+            
+            // Обновляем максимум для нулей
+            if (current_zeros > max_zeros) {
+                max_zeros = current_zeros;
+            }
+        }
+    }
+    
+    // Проверяем условие: максимальный отрезок единиц СТРОГО больше максимального отрезка нулей
+    return max_ones > max_zeros;
+}
+```
