@@ -2133,3 +2133,33 @@ bool checkZeroOnes(char* s) {
     return max_ones > max_zeros;
 }
 ```
+
+## [1304. Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
+```c
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* sumZero(int n, int* returnSize) {
+    // Выделяем память для результата
+    int* result = (int*)malloc(n * sizeof(int));
+    *returnSize = n;
+    
+    // Если n нечетное, добавляем 0 и заполняем симметричными парами
+    if (n % 2 == 1) {
+        result[n - 1] = 0;  // Последний элемент = 0
+        for (int i = 0; i < n - 1; i += 2) {
+            result[i] = i + 1;        // Положительное число
+            result[i + 1] = -(i + 1); // Отрицательное число
+        }
+    } 
+    // Если n четное, заполняем только симметричными парами
+    else {
+        for (int i = 0; i < n; i += 2) {
+            result[i] = i + 1;        // Положительное число
+            result[i + 1] = -(i + 1); // Отрицательное число
+        }
+    }
+    
+    return result;
+}
+```
