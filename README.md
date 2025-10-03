@@ -2163,3 +2163,44 @@ int* sumZero(int n, int* returnSize) {
     return result;
 }
 ```
+
+## [3105. Longest Strictly Increasing or Strictly Decreasing Subarray](https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/description/)
+```c
+int longestMonotonicSubarray(int* nums, int numsSize) {
+    if (numsSize == 0) return 0;
+    if (numsSize == 1) return 1;
+    
+    int max_len = 1; // Минимальная длина подмассива всегда 1
+    
+    // Проверяем все возможные подмассивы
+    for (int start = 0; start < numsSize; start++) {
+        // Проверяем строго возрастающие подмассивы
+        int inc_len = 1;
+        for (int end = start + 1; end < numsSize; end++) {
+            if (nums[end] > nums[end - 1]) {
+                inc_len++;
+            } else {
+                break;
+            }
+        }
+        if (inc_len > max_len) {
+            max_len = inc_len;
+        }
+        
+        // Проверяем строго убывающие подмассивы
+        int dec_len = 1;
+        for (int end = start + 1; end < numsSize; end++) {
+            if (nums[end] < nums[end - 1]) {
+                dec_len++;
+            } else {
+                break;
+            }
+        }
+        if (dec_len > max_len) {
+            max_len = dec_len;
+        }
+    }
+    
+    return max_len;
+}
+```
