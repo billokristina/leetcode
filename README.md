@@ -2204,3 +2204,24 @@ int longestMonotonicSubarray(int* nums, int numsSize) {
     return max_len;
 }
 ```
+
+## [485. Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones/description/)
+```c
+int findMaxConsecutiveOnes(int* nums, int numsSize) {
+    int res = 0;
+    int len = 0;
+
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i]) {
+            len++;
+        } else {
+            len = 0;
+        }
+        
+        if (len > res) {
+            res = len;
+        }
+    }
+    return res;
+}
+```
