@@ -2225,3 +2225,27 @@ int findMaxConsecutiveOnes(int* nums, int numsSize) {
     return res;
 }
 ```
+
+## [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+```c
+int search(int* nums, int numsSize, int target) {
+    int left = 0;
+    int right = numsSize - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (nums[mid] == target) {
+            return mid;  // Нашли target, возвращаем индекс
+        }
+        else if (nums[mid] < target) {
+            left = mid + 1;  // Искомый элемент в правой половине
+        }
+        else {
+            right = mid - 1;  // Искомый элемент в левой половине
+        }
+    }
+    
+    return -1;  // Элемент не найден
+}
+```
