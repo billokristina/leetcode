@@ -2249,3 +2249,30 @@ int search(int* nums, int numsSize, int target) {
     return -1;  // Элемент не найден
 }
 ```
+
+## [1725. Number Of Rectangles That Can Form The Largest Square](https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/description/)
+```c
+int countGoodRectangles(int** rectangles, int rectanglesSize, int* rectanglesColSize){
+    int maxLen = 0;  // Максимальная длина квадрата
+    int count = 0;   // Счетчик прямоугольников, дающих квадрат максимальной длины
+    
+    // Проходим по всем прямоугольникам
+    for (int i = 0; i < rectanglesSize; i++) {
+        // Для каждого прямоугольника находим максимально возможную сторону квадрата
+        // Это минимум из длины и ширины
+        int currentLen = (rectangles[i][0] < rectangles[i][1]) ? rectangles[i][0] : rectangles[i][1];
+        
+        // Если нашли квадрат больше текущего максимума
+        if (currentLen > maxLen) {
+            maxLen = currentLen;  // Обновляем максимум
+            count = 1;            // Начинаем новый счетчик
+        }
+        // Если нашли квадрат равный текущему максимуму
+        else if (currentLen == maxLen) {
+            count++;  // Увеличиваем счетчик
+        }
+    }
+    
+    return count;
+}
+```
