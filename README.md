@@ -2276,3 +2276,44 @@ int countGoodRectangles(int** rectangles, int rectanglesSize, int* rectanglesCol
     return count;
 }
 ```
+
+## [1742. Maximum Number of Balls in a Box](https://leetcode.com/problems/maximum-number-of-balls-in-a-box/description/)
+```c
+#include <stdlib.h>
+
+// Функция для вычисления суммы цифр числа
+int digitSum(int num) {
+    int sum = 0;
+    while (num > 0) {
+        sum += num % 10;  // Добавляем последнюю цифру
+        num /= 10;        // Убираем последнюю цифру
+    }
+    return sum;
+}
+
+int countBalls(int lowLimit, int highLimit) {
+    // Максимальная возможная сумма цифр для highLimit = 100000
+    // 99999 -> 9+9+9+9+9 = 45, но для надежности возьмем запас
+    int maxBox = 46; // Максимальный номер коробки
+    
+    // Создаем массив для подсчета мячей в коробках
+    int* boxes = (int*)calloc(maxBox + 1, sizeof(int));
+    
+    // Проходим по всем мячам
+    for (int ball = lowLimit; ball <= highLimit; ball++) {
+        int boxNum = digitSum(ball);  // Вычисляем номер коробки
+        boxes[boxNum]++;              // Увеличиваем счетчик коробки
+    }
+    
+    // Находим коробку с максимальным количеством мячей
+    int maxBalls = 0;
+    for (int i = 1; i <= maxBox; i++) {
+        if (boxes[i] > maxBalls) {
+            maxBalls = boxes[i];
+        }
+    }
+    
+    free(boxes);  // Освобождаем память
+    return maxBalls;
+}
+```
