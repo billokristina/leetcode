@@ -2317,3 +2317,41 @@ int countBalls(int lowLimit, int highLimit) {
     return maxBalls;
 }
 ```
+
+## [1624. Largest Substring Between Two Equal Characters](https://leetcode.com/problems/largest-substring-between-two-equal-characters/description/)
+```c
+int maxLengthBetweenEqualCharacters(char* s) {
+    // Массив для хранения первого вхождения каждого символа
+    int first_occurrence[26];
+    
+    // Инициализируем массив значением -1 (символ еще не встречался)
+    for (int i = 0; i < 26; i++) {
+        first_occurrence[i] = -1;
+    }
+    
+    int max_length = -1;
+    int i = 0;
+    
+    // Проходим по строке
+    while (s[i] != '\0') {
+        int char_index = s[i] - 'a';  // Преобразуем символ в индекс (0-25)
+        
+        if (first_occurrence[char_index] == -1) {
+            // Первое вхождение символа - сохраняем позицию
+            first_occurrence[char_index] = i;
+        } else {
+            // Символ уже встречался - вычисляем длину подстроки между ними
+            int length = i - first_occurrence[char_index] - 1;
+            
+            // Обновляем максимальную длину
+            if (length > max_length) {
+                max_length = length;
+            }
+        }
+        
+        i++;
+    }
+    
+    return max_length;
+}
+```
