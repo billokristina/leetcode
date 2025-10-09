@@ -2422,3 +2422,35 @@ int* getNoZeroIntegers(int n, int* returnSize) {
     return result;
 }
 ```
+
+## [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)
+```c
+char* reverseWords(char* s) {
+    int length = strlen(s);
+    char* result = (char*)malloc(length + 1);
+    strcpy(result, s);
+    
+    int start = 0;
+    
+    for (int i = 0; i <= length; i++) {
+        // Если нашли пробел или конец строки - разворачиваем слово
+        if (result[i] == ' ' || result[i] == '\0') {
+            int end = i - 1;
+            
+            // Разворачиваем слово от start до end
+            while (start < end) {
+                char temp = result[start];
+                result[start] = result[end];
+                result[end] = temp;
+                start++;
+                end--;
+            }
+            
+            // Переходим к началу следующего слова
+            start = i + 1;
+        }
+    }
+    
+    return result;
+}
+```
