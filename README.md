@@ -2381,3 +2381,44 @@ bool isSumEqual(char* firstWord, char* secondWord, char* targetWord) {
     return (num1 + num2) == numTarget;
 }
 ```
+
+## [1317. Convert Integer to the Sum of Two No-Zero Integers](https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/description/)
+```c
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+// Вспомогательная функция для проверки отсутствия нулей в числе
+int containsNoZero(int num) {
+    while (num > 0) {
+        int digit = num % 10;  // Получаем последнюю цифру
+        if (digit == 0) {
+            return 0;  // Найден ноль - число не подходит
+        }
+        num /= 10;  // Убираем последнюю цифру
+    }
+    return 1;  // Нулей не найдено
+}
+
+int* getNoZeroIntegers(int n, int* returnSize) {
+    // Выделяем память для результата (массив из 2 элементов)
+    int* result = (int*)malloc(2 * sizeof(int));
+    *returnSize = 2;
+    
+    // Перебираем возможные значения a от 1 до n-1
+    for (int a = 1; a < n; a++) {
+        int b = n - a;
+        
+        // Проверяем, что оба числа не содержат нулей
+        if (containsNoZero(a) && containsNoZero(b)) {
+            result[0] = a;
+            result[1] = b;
+            return result;
+        }
+    }
+    
+    // Если не нашли пару (по условию всегда должна быть)
+    result[0] = 1;
+    result[1] = n - 1;
+    return result;
+}
+```
