@@ -2355,3 +2355,29 @@ int maxLengthBetweenEqualCharacters(char* s) {
     return max_length;
 }
 ```
+
+## [1880. Check if Word Equals Summation of Two Words](https://leetcode.com/problems/check-if-word-equals-summation-of-two-words/description/)
+```c
+bool isSumEqual(char* firstWord, char* secondWord, char* targetWord) {
+    // Функция для преобразования слова в числовое значение
+    int wordToNumber(char* word) {
+        int result = 0;
+        // Проходим по каждому символу слова
+        for (int i = 0; word[i] != '\0'; i++) {
+            // Преобразуем букву в цифру: 'a'->0, 'b'->1, ..., 'j'->9
+            int digit = word[i] - 'a';
+            // Добавляем цифру к результату (умножаем текущий результат на 10)
+            result = result * 10 + digit;
+        }
+        return result;
+    }
+    
+    // Преобразуем все три слова в числа
+    int num1 = wordToNumber(firstWord);
+    int num2 = wordToNumber(secondWord);
+    int numTarget = wordToNumber(targetWord);
+    
+    // Проверяем равенство суммы и целевого числа
+    return (num1 + num2) == numTarget;
+}
+```
