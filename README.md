@@ -2454,3 +2454,38 @@ char* reverseWords(char* s) {
     return result;
 }
 ```
+
+## [1779. Find Nearest Point That Has the Same X or Y Coordinate](https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/description/)
+```c
+int nearestValidPoint(int x, int y, int** points, int pointsSize, int* pointsColSize) {
+    int min_distance = INT_MAX;  // Инициализируем минимальное расстояние максимальным значением
+    int best_index = -1;         // Изначально индекс -1 (если не найдем валидных точек)
+    
+    // Проходим по всем точкам в массиве
+    for (int i = 0; i < pointsSize; i++) {
+        int a = points[i][0];  // x-координата текущей точки
+        int b = points[i][1];  // y-координата текущей точки
+        
+        // Проверяем, является ли точка валидной
+        // Точка валидна, если ее x совпадает с нашим x ИЛИ ее y совпадает с нашим y
+        if (a == x || b == y) {
+            // Вычисляем манхэттенское расстояние
+            int distance = abs(x - a) + abs(y - b);
+            
+            // Если нашли точку с меньшим расстоянием, обновляем минимум
+            if (distance < min_distance) {
+                min_distance = distance;
+                best_index = i;
+            }
+            // Если расстояние равно текущему минимуму, выбираем точку с меньшим индексом
+            else if (distance == min_distance) {
+                if (i < best_index) {
+                    best_index = i;
+                }
+            }
+        }
+    }
+    
+    return best_index;  // Возвращаем индекс лучшей точки или -1 если не нашли
+}
+```
