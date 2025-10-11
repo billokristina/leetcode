@@ -2489,3 +2489,49 @@ int nearestValidPoint(int x, int y, int** points, int pointsSize, int* pointsCol
     return best_index;  // Возвращаем индекс лучшей точки или -1 если не нашли
 }
 ```
+
+## [1556. Thousand Separator](https://leetcode.com/problems/thousand-separator/description/)
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* thousandSeparator(int n) {
+    // Обрабатываем случай n = 0
+    if (n == 0) {
+        char* result = (char*)malloc(2 * sizeof(char));
+        strcpy(result, "0");
+        return result;
+    }
+    
+    // Преобразуем число в строку без разделителей
+    char temp[20]; // Максимальная длина для int (2^31-1 = 2147483647)
+    sprintf(temp, "%d", n);
+    int len = strlen(temp);
+    
+    // Вычисляем длину результирующей строки
+    // Количество точек = (len - 1) / 3
+    int dots = (len - 1) / 3;
+    int result_len = len + dots;
+    
+    // Выделяем память для результата
+    char* result = (char*)malloc((result_len + 1) * sizeof(char));
+    result[result_len] = '\0'; // Завершающий нуль-символ
+    
+    int result_index = result_len - 1;
+    int count = 0;
+    
+    // Заполняем строку с конца, добавляя точки каждые 3 цифры
+    for (int i = len - 1; i >= 0; i--) {
+        result[result_index--] = temp[i];
+        count++;
+        
+        // Добавляем точку после каждых 3 цифр, кроме последней группы
+        if (count % 3 == 0 && i > 0) {
+            result[result_index--] = '.';
+        }
+    }
+    
+    return result;
+}
+```
