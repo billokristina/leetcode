@@ -2535,3 +2535,24 @@ char* thousandSeparator(int n) {
     return result;
 }
 ```
+
+## [3248. Snake in Matrix](https://leetcode.com/problems/snake-in-matrix/description/)
+```c
+int finalPositionOfSnake(int n, char** commands, int commandsSize) {
+        int i = 0, j = 0;  // начальная позиция (0,0)
+    
+    for (int k = 0; k < commandsSize; k++) {
+        if (strcmp(commands[k], "UP") == 0) {
+            i--;
+        } else if (strcmp(commands[k], "DOWN") == 0) {
+            i++;
+        } else if (strcmp(commands[k], "LEFT") == 0) {
+            j--;
+        } else if (strcmp(commands[k], "RIGHT") == 0) {
+            j++;
+        }
+    }
+    
+    return i * n + j;
+}
+```
