@@ -2556,3 +2556,27 @@ int finalPositionOfSnake(int n, char** commands, int commandsSize) {
     return i * n + j;
 }
 ```
+
+## [1108. Defanging an IP Address](https://leetcode.com/problems/defanging-an-ip-address/description/)
+```c
+char * defangIPaddr(char * address){
+    int strSize = strlen(address) + 8;
+    char *result = (char *)malloc((strSize + 1) * sizeof(char));
+    if (result == NULL)
+        return NULL;
+    int j = 0;
+    for (int i = 0; i < strlen(address); i++)
+    {
+        if (address[i] == '.')
+        {
+            result[j++] = '[';
+            result[j++] = '.';
+            result[j++] = ']';
+        }
+        else
+            result[j++] = address[i];
+    }
+    result[j] = '\0';
+    return result;
+}
+```
