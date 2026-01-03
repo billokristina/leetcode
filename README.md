@@ -2610,3 +2610,56 @@ int sumOfLeftLeaves(struct TreeNode* root) {
     return sum;
 }
 ```
+
+## [859. Buddy Strings](https://leetcode.com/problems/buddy-strings/description/)
+```c
+bool buddyStrings(char *s, char *goal)
+{
+    int len_s = strlen(s);
+    int len_goal = strlen(goal);
+    
+    if (len_s != len_goal)
+        return false;
+
+    if (strcmp(s, goal) == 0)
+    {
+        // поиск дубликатов можно вынести в отдельную функцию
+        int alph[26] = {0};
+        for (int i = 0; i < len_s; i++)
+        {
+            alph[s[i] - 'a']++;
+            if (alph[s[i] - 'a'] > 1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int count = 0;
+    int pos1 = -1, pos2 = -1;
+    for (int i = 0; i < len_s; i++)
+    {
+        if (s[i] != goal[i])
+        {
+            count++;
+            if (count > 2)
+                return false;
+            if (pos1 == -1)
+                pos1 = i;
+            else
+            {
+                pos2 = i;
+            }
+        }
+    }
+
+    if (count != 2)
+        return false;
+    
+    if (pos1 < 0 || pos1 >= len_s || pos2 < 0 || pos2 >= len_s)
+        return false;
+    
+    return (s[pos1] == goal[pos2] && s[pos2] == goal[pos1]);
+}
+```
