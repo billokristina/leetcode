@@ -2663,3 +2663,30 @@ bool buddyStrings(char *s, char *goal)
     return (s[pos1] == goal[pos2] && s[pos2] == goal[pos1]);
 }
 ```
+
+## [2441. Largest Positive Integer That Exists With Its Negative](https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/description/)
+```c
+int findMaxK(int* nums, int numsSize) {
+    bool hash[2001] = {false};
+    
+    for (int i = 0; i < numsSize; i++) {
+        hash[nums[i] + 1000] = true;
+    }
+    
+    int maxK = -1;
+    
+    for (int i = 0; i < numsSize; i++) {
+        int num = nums[i];
+        
+        if (num > 0) {
+            if (hash[1000 - num]) {
+                if (num > maxK) {
+                    maxK = num;
+                }
+            }
+        }
+    }
+    
+    return maxK;
+}
+```
