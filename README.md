@@ -2690,3 +2690,29 @@ int findMaxK(int* nums, int numsSize) {
     return maxK;
 }
 ```
+
+## [1758. Minimum Changes To Make Alternating Binary String](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/description/)
+```c
+int minOperations(char* s) {
+    int len = strlen(s);
+    int count1 = 0;  // количество изменений для паттерна "010101..."
+    int count2 = 0;  // количество изменений для паттерна "101010..."
+    
+    // Паттерн 1: начинается с '0' ("010101...")
+    // Паттерн 2: начинается с '1' ("101010...")
+    for (int i = 0; i < len; i++) {
+        char expected1 = (i % 2 == 0) ? '0' : '1';
+        char expected2 = (i % 2 == 0) ? '1' : '0';
+        
+        if (s[i] != expected1) {
+            count1++;
+        }
+        if (s[i] != expected2) {
+            count2++;
+        }
+    }
+    
+    // Возвращаем минимальное из двух значений
+    return (count1 < count2) ? count1 : count2;
+}
+```
