@@ -2716,3 +2716,47 @@ int minOperations(char* s) {
     return (count1 < count2) ? count1 : count2;
 }
 ```
+
+## [3545. Minimum Deletions for At Most K Distinct Characters](https://leetcode.com/problems/minimum-deletions-for-at-most-k-distinct-characters/description/)
+```c
+int minDeletion(char* s, int k) {
+    int freq[26] = {0};  
+    
+    for (int i = 0; s[i] != '\0'; i++) {
+        freq[s[i] - 'a']++;
+    }
+    
+    int non_zero_freq[26];
+    int distinct_count = 0;
+    
+    for (int i = 0; i < 26; i++) {
+        if (freq[i] > 0) {
+            non_zero_freq[distinct_count] = freq[i];
+            distinct_count++;
+        }
+    }
+    
+    if (distinct_count <= k) {
+        return 0;
+    }
+    
+    for (int i = 0; i < distinct_count - 1; i++) {
+        for (int j = 0; j < distinct_count - i - 1; j++) {
+            if (non_zero_freq[j] > non_zero_freq[j + 1]) {
+                int temp = non_zero_freq[j];
+                non_zero_freq[j] = non_zero_freq[j + 1];
+                non_zero_freq[j + 1] = temp;
+            }
+        }
+    }
+    
+    int types_to_remove = distinct_count - k;
+    
+    int deletions = 0;
+    for (int i = 0; i < types_to_remove; i++) {
+        deletions += non_zero_freq[i];
+    }
+    
+    return deletions;
+}
+```
