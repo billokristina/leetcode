@@ -2760,3 +2760,33 @@ int minDeletion(char* s, int k) {
     return deletions;
 }
 ```
+
+## [3456. Find Special Substring of Length K](https://leetcode.com/problems/find-special-substring-of-length-k/description/)
+```c
+bool hasSpecialSubstring(char *s, int k) {
+    int len = strlen(s);
+    
+    for (int i = 0; i <= len - k; i++) {
+        // Проверяем, что все k символов одинаковы
+        bool all_same = true;
+        for (int j = 1; j < k; j++) {
+            if (s[i] != s[i + j]) {
+                all_same = false;
+                break;
+            }
+        }
+        
+        if (!all_same) continue;
+        
+        // Проверяем символ перед подстрокой (если он есть)
+        if (i > 0 && s[i - 1] == s[i]) continue;
+        
+        // Проверяем символ после подстроки (если он есть)
+        if (i + k < len && s[i + k] == s[i]) continue;
+        
+        return true;
+    }
+    
+    return false;
+}
+```
