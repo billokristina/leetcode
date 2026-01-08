@@ -2790,3 +2790,32 @@ bool hasSpecialSubstring(char *s, int k) {
     return false;
 }
 ```
+
+## [2784. Check if Array is Good](https://leetcode.com/problems/check-if-array-is-good/description/)
+```c
+bool isGood(int *nums, int numsSize)
+{
+    int max = -1;
+    int freq[201] = {0};
+    
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] > max)
+            max = nums[i];
+    }
+    
+    if (numsSize != max + 1)
+        return false;
+    
+    if (freq[max] != 2)
+        return false;
+    
+    for (int i = 1; i < max; i++)
+    {
+        if (freq[i] != 1)
+            return false;
+    }
+    
+    return true;
+}
+```
