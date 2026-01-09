@@ -2819,3 +2819,25 @@ bool isGood(int *nums, int numsSize)
     return true;
 }
 ```
+
+## [3736. Minimum Moves to Equal Array Elements III](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/description/)
+```c
+int minMoves(int *nums, int numsSize)
+{
+    int result = 0;
+    if (numsSize == 1)
+        return 0;
+    int max = -1;
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] > max)
+            max = nums[i];
+    }
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] != max)
+            result += (max - nums[i]);
+    }
+    return result;
+}
+```
