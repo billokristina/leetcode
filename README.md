@@ -2862,3 +2862,27 @@ bool kLengthApart(int* nums, int numsSize, int k) {
     return true;
 }
 ```
+
+## [2760. Longest Even Odd Subarray With Threshold](https://leetcode.com/problems/longest-even-odd-subarray-with-threshold/description/)
+```c
+int longestAlternatingSubarray(int *nums, int numsSize, int threshold)
+{
+    int max_len = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] % 2 == 0 && nums[i] <= threshold)
+        {
+            int len = 1;
+            int j = i + 1;
+            while (j < numsSize && nums[j] <= threshold && (nums[j - 1] % 2) != (nums[j] % 2))
+            {
+                j++;
+                len++;
+            }
+            if (len > max_len)
+                max_len = len;
+        }
+    }
+    return max_len;
+}
+```
