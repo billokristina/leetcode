@@ -2886,3 +2886,25 @@ int longestAlternatingSubarray(int *nums, int numsSize, int threshold)
     return max_len;
 }
 ```
+
+## [1800. Maximum Ascending Subarray Sum](https://leetcode.com/problems/maximum-ascending-subarray-sum/description/)
+```c
+int maxAscendingSum(int* nums, int numsSize) {
+    int max_sum = nums[0];
+    int sum = nums[0];
+    for (int i = 1; i < numsSize; i++)
+    {
+        if (nums[i] > nums[i - 1])
+            sum += nums[i];
+        else
+        {
+            if (sum > max_sum)
+                max_sum = sum;
+            sum = nums[i];
+        }
+    }
+    if (sum > max_sum)
+        max_sum = sum;
+    return max_sum;
+}
+```
