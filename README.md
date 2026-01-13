@@ -2908,3 +2908,55 @@ int maxAscendingSum(int* nums, int numsSize) {
     return max_sum;
 }
 ```
+
+## [1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence](https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/description/)
+```c
+int isPrefixOfWord(char *sentence, char *searchWord)
+{
+    int word_count = 1;
+    int i = 0;
+    int len = strlen(sentence);
+    int search_len = strlen(searchWord);
+    
+    while (i < len)
+    {
+        if (sentence[i] == ' ')
+        {
+            word_count++;
+            i++;
+            continue;
+        }
+        
+        int start = i;
+        
+        while (i < len && sentence[i] != ' ')
+        {
+            i++;
+        }
+        
+        int word_len = i - start;
+        
+        if (word_len < search_len)
+        {
+            continue;
+        }
+        
+        int match = 1;
+        for (int j = 0; j < search_len; j++)
+        {
+            if (sentence[start + j] != searchWord[j])
+            {
+                match = 0;
+                break;
+            }
+        }
+        
+        if (match)
+        {
+            return word_count;
+        }
+    }
+    
+    return -1;
+}
+```
