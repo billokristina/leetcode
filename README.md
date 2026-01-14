@@ -2960,3 +2960,40 @@ int isPrefixOfWord(char *sentence, char *searchWord)
     return -1;
 }
 ```
+
+## [3349. Adjacent Increasing Subarrays Detection I](https://leetcode.com/problems/adjacent-increasing-subarrays-detection-i/description/)
+```c
+bool hasIncreasingSubarrays(int *nums, int numsSize, int k)
+{
+    for (int a = 0; a <= numsSize - 2 * k; a++)
+    {
+        bool firstIncreasing = true;
+        bool secondIncreasing = true;
+        
+        for (int i = a; i < a + k - 1; i++)
+        {
+            if (nums[i] >= nums[i + 1])
+            {
+                firstIncreasing = false;
+                break;
+            }
+        }
+        
+        if (!firstIncreasing) continue;
+        
+        for (int i = a + k; i < a + 2 * k - 1; i++)
+        {
+            if (nums[i] >= nums[i + 1])
+            {
+                secondIncreasing = false;
+                break;
+            }
+        }
+        
+        if (firstIncreasing && secondIncreasing)
+            return true;
+    }
+    
+    return false;
+}
+```
