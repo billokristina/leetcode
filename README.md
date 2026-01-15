@@ -2997,3 +2997,36 @@ bool hasIncreasingSubarrays(int *nums, int numsSize, int k)
     return false;
 }
 ```
+
+## [409. Longest Palindrome](https://leetcode.com/problems/longest-palindrome/description/)
+```c
+int longestPalindrome(char* s) {
+    int count[52] = {0};
+    int length = 0;
+    
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] >= 'a' && s[i] <= 'z') {
+            count[s[i] - 'a']++;
+        } else {
+            count[s[i] - 'A' + 26]++;
+        }
+    }
+    
+    bool hasOdd = false;
+    
+    for (int i = 0; i < 52; i++) {
+        if (count[i] % 2 == 0) {
+            length += count[i];
+        } else {
+            length += count[i] - 1;
+            hasOdd = true;
+        }
+    }
+    
+    if (hasOdd) {
+        length += 1;
+    }
+    
+    return length;
+}
+```
