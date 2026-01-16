@@ -3030,3 +3030,25 @@ int longestPalindrome(char* s) {
     return length;
 }
 ```
+
+## [717. 1-bit and 2-bit Characters](https://leetcode.com/problems/1-bit-and-2-bit-characters/description/)
+```c
+bool isOneBitCharacter(int *bits, int bitsSize)
+{
+       for (int i = 0; i < bitsSize;)
+       {
+              if (i == bitsSize - 1 && !bits[i])
+                     return true;
+              if (bits[i])
+              {
+                     if ((i + 2) >= bitsSize)
+                            return false;
+                     else
+                            i+=2;
+              }
+              else
+                     i++;
+       }
+       return false;
+}
+```
