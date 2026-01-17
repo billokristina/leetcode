@@ -3052,3 +3052,39 @@ bool isOneBitCharacter(int *bits, int bitsSize)
        return false;
 }
 ```
+
+## [2553. Separate the Digits in an Array](https://leetcode.com/problems/separate-the-digits-in-an-array/description/)
+```c
+int count_digits(int n) {
+    if (n == 0) return 1;
+    return (int)log10(n) + 1;
+}
+
+int* separateDigits(int* nums, int numsSize, int* returnSize) {
+    *returnSize = 0;
+    for (int i = 0; i < numsSize; i++) {
+        *returnSize += count_digits(nums[i]);
+    }
+    
+    int* result = malloc(*returnSize * sizeof(int));
+    if (!result) return NULL;
+    
+    int index = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        int num = nums[i];
+        
+        int digit_count = count_digits(num);
+        
+        int divisor = (int)pow(10, digit_count - 1);
+        
+        for (int j = 0; j < digit_count; j++) {
+            result[index++] = num / divisor;
+            num %= divisor;
+            divisor /= 10;
+        }
+    }
+    
+    return result;
+}
+```
