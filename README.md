@@ -3088,3 +3088,21 @@ int* separateDigits(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 ```
+
+## [1018. Binary Prefix Divisible By 5](https://leetcode.com/problems/binary-prefix-divisible-by-5/description/)
+```c
+bool* prefixesDivBy5(int* nums, int numsSize, int* returnSize) {
+    bool* answer = (bool*)malloc(numsSize * sizeof(bool));
+    *returnSize = numsSize;
+    
+    int current = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        current = (current * 2 + nums[i]) % 5;
+        
+        answer[i] = (current == 0);
+    }
+    
+    return answer;
+}
+```
