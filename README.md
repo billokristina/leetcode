@@ -3106,3 +3106,39 @@ bool* prefixesDivBy5(int* nums, int numsSize, int* returnSize) {
     return answer;
 }
 ```
+
+## [2248. Intersection of Multiple Arrays](https://leetcode.com/problems/intersection-of-multiple-arrays/description/)
+```c
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* intersection(int** nums, int numsSize, int* numsColSize, int* returnSize) {
+    int freq[1001] = {0};
+    
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = 0; j < numsColSize[i]; j++) {
+            int num = nums[i][j];
+            freq[num]++;
+        }
+    }
+    
+    int count = 0;
+    for (int i = 1; i <= 1000; i++) {
+        if (freq[i] == numsSize) {
+            count++;
+        }
+    }
+    
+    int* result = (int*)malloc(count * sizeof(int));
+    *returnSize = count;
+    
+    int index = 0;
+    for (int i = 1; i <= 1000; i++) {
+        if (freq[i] == numsSize) {
+            result[index++] = i;
+        }
+    }
+    
+    return result;
+}
+```
