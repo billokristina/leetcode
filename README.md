@@ -3142,3 +3142,25 @@ int* intersection(int** nums, int numsSize, int* numsColSize, int* returnSize) {
     return result;
 }
 ```
+
+## [2729. Check if The Number is Fascinating](https://leetcode.com/problems/check-if-the-number-is-fascinating/description/)
+```c
+bool isFascinating(int n) {
+        if (n > 333)
+              return false;
+       if (n % 10 == (n / 10) || n % 10 == n / 100 || (n / 10) % 10 == n / 100)
+              return false;
+       int arr[9] = {0};
+       n = n * 1000000 + (n * 2) * 1000 + n * 3;
+       while (n)
+       {
+              if (n % 10 == 0)
+                     return false;
+              arr[n % 10 - 1]++;
+              if (arr[n % 10 - 1] > 1)
+                     return false;
+              n /= 10;
+       }
+       return true;
+}
+```
