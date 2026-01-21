@@ -3164,3 +3164,16 @@ bool isFascinating(int n) {
        return true;
 }
 ```
+
+## [2427. Number of Common Factors](https://leetcode.com/problems/number-of-common-factors/description/)
+```c
+int commonFactors(int a, int b) {
+       int count = 0;
+       for (int i = 1; i <= ((a < b) ? a : b); i++)
+       {
+              if (a % i == 0 && b % i == 0)
+                     count++;
+       }
+       return count;
+}
+```
