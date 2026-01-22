@@ -3177,3 +3177,23 @@ int commonFactors(int a, int b) {
        return count;
 }
 ```
+
+## [3718. Smallest Missing Multiple of K](https://leetcode.com/problems/smallest-missing-multiple-of-k/description/)
+```c
+int missingMultiple(int* nums, int numsSize, int k) {
+    for (int multiple = k; ; multiple += k) {
+        int found = 0;
+        
+        for (int i = 0; i < numsSize; i++) {
+            if (nums[i] == multiple) {
+                found = 1;
+                break;
+            }
+        }
+        
+        if (!found) {
+            return multiple;
+        }
+    }
+}
+```
