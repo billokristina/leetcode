@@ -3216,3 +3216,25 @@ bool divideArray(int* nums, int numsSize) {
     return true;
 }
 ```
+
+## [1332. Remove Palindromic Subsequences](https://leetcode.com/problems/remove-palindromic-subsequences/description/)
+```c
+int removePalindromeSub(char* s) {
+    if (s[0] == '\0') return 0;
+    
+    int left = 0;
+    int right = strlen(s) - 1;
+    int isPalindrome = 1;
+    
+    while (left < right) {
+        if (s[left] != s[right]) {
+            isPalindrome = 0;
+            break;
+        }
+        left++;
+        right--;
+    }
+    
+    return isPalindrome ? 1 : 2;
+}
+```
