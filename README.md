@@ -3245,3 +3245,30 @@ int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
     return (arrivalTime + delayedTime) % 24;
 }
 ```
+
+## [1207. Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences/description/)
+```c
+bool uniqueOccurrences(int* arr, int arrSize) {
+    int freq[2001] = {0};
+    
+    for (int i = 0; i < arrSize; i++) {
+        freq[arr[i]+1000]++;
+    }
+    
+    bool freq_check[arrSize + 1];
+    for (int i = 0; i <= arrSize; i++) {
+        freq_check[i] = false;
+    }
+    
+    for (int i = 0; i <= 2000; i++) {
+        if (freq[i] > 0) {
+            if (freq_check[freq[i]]) {
+                return false;
+            }
+            freq_check[freq[i]] = true;
+        }
+    }
+    
+    return true;
+}
+```
