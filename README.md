@@ -3272,3 +3272,27 @@ bool uniqueOccurrences(int* arr, int arrSize) {
     return true;
 }
 ```
+
+## [3210. Find the Encrypted String](https://leetcode.com/problems/find-the-encrypted-string/description/)
+```c
+char* getEncryptedString(char* s, int k) {
+    int n = strlen(s);
+    
+    char* result = (char*)malloc((n + 1) * sizeof(char));
+    
+    int shift = k % n;
+    
+    if (shift == 0) {
+        strcpy(result, s);
+        return result;
+    }
+    
+    for (int i = 0; i < n; i++) {
+        result[i] = s[(i + shift) % n];
+    }
+    
+    result[n] = '\0';
+    
+    return result;
+}
+```
