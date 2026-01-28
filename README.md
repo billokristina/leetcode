@@ -3296,3 +3296,19 @@ char* getEncryptedString(char* s, int k) {
     return result;
 }
 ```
+
+## [3190. Find Minimum Operations to Make All Elements Divisible by Three](https://leetcode.com/problems/find-minimum-operations-to-make-all-elements-divisible-by-three/description/)
+```c
+int minimumOperations(int* nums, int numsSize) {
+    int operations = 0;
+    for (int i = 0; i < numsSize; i++) {
+        int remainder = nums[i] % 3;
+        if (remainder == 0) {
+            continue;
+        } else {
+            operations++;
+        }
+    }
+    return operations;
+}
+```
