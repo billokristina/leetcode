@@ -3312,3 +3312,35 @@ int minimumOperations(int* nums, int numsSize) {
     return operations;
 }
 ```
+
+## [3264. Final Array State After K Multiplication Operations I](https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i/description/)
+```c
+int* getFinalState(int* nums, int numsSize, int k, int multiplier, int* returnSize) {
+    int* result = (int*)malloc(numsSize * sizeof(int));
+    if (result == NULL) {
+        *returnSize = 0;
+        return NULL;
+    }
+    
+    for (int i = 0; i < numsSize; i++) {
+        result[i] = nums[i];
+    }
+    
+    for (int op = 0; op < k; op++) {
+        int minIndex = 0;
+        int minValue = result[0];
+        
+        for (int i = 1; i < numsSize; i++) {
+            if (result[i] < minValue) {
+                minValue = result[i];
+                minIndex = i;
+            }
+        }
+        
+        result[minIndex] = minValue * multiplier;
+    }
+    
+    *returnSize = numsSize;
+    return result;
+}
+```
