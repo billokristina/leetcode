@@ -3344,3 +3344,25 @@ int* getFinalState(int* nums, int numsSize, int k, int multiplier, int* returnSi
     return result;
 }
 ```
+
+## [3803. Count Residue Prefixes](https://leetcode.com/problems/count-residue-prefixes/)
+```c
+int residuePrefixes(char *s)
+{
+       int freq[26] = {0};
+       int distinct = 0;
+       int result = 0;
+       int len = strlen(s);
+
+       for (int i = 0; i < len; i++)
+       {
+              if (freq[s[i] - 'a'] == 0)
+                     distinct++;
+              freq[s[i] - 'a']++;
+
+              if (distinct == (i + 1) % 3)
+                     result++;
+       }
+       return result;
+}
+```
