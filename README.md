@@ -3366,3 +3366,27 @@ int residuePrefixes(char *s)
        return result;
 }
 ```
+
+# [2908. Minimum Sum of Mountain Triplets I](https://leetcode.com/problems/minimum-sum-of-mountain-triplets-i/description/)
+```c
+int minimumSum(int* nums, int numsSize) {
+    int minSum = INT_MAX;
+    
+    for (int j = 1; j < numsSize - 1; j++) {
+        for (int i = 0; i < j; i++) {
+            if (nums[i] < nums[j]) {
+                for (int k = j + 1; k < numsSize; k++) {
+                    if (nums[k] < nums[j]) {
+                        int sum = nums[i] + nums[j] + nums[k];
+                        if (sum < minSum) {
+                            minSum = sum;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return (minSum == INT_MAX) ? -1 : minSum;
+}
+```
