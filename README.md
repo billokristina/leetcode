@@ -3390,3 +3390,19 @@ int minimumSum(int* nums, int numsSize) {
     return (minSum == INT_MAX) ? -1 : minSum;
 }
 ```
+
+# [3028. Ant on the Boundary](https://leetcode.com/problems/ant-on-the-boundary/description/)
+```c
+int returnToBoundaryCount(int *nums, int numsSize)
+{
+    int result = 0;
+    int idx = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        idx += nums[i];
+        if (idx == 0)
+            result++;
+    }
+    return result;
+}
+```
