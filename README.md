@@ -3406,3 +3406,26 @@ int returnToBoundaryCount(int *nums, int numsSize)
     return result;
 }
 ```
+
+# [2932. Maximum Strong Pair XOR I](https://leetcode.com/problems/maximum-strong-pair-xor-i/description/)
+```c
+int maximumStrongPairXor(int* nums, int numsSize) {
+    int maxXor = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = 0; j < numsSize; j++) {
+            int x = nums[i];
+            int y = nums[j];
+            
+            if (abs(x - y) <= (x < y ? x : y)) {
+                int currentXor = x ^ y;
+                if (currentXor > maxXor) {
+                    maxXor = currentXor;
+                }
+            }
+        }
+    }
+    
+    return maxXor;
+}
+```
