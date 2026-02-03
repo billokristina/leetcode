@@ -3429,3 +3429,57 @@ int maximumStrongPairXor(int* nums, int numsSize) {
     return maxXor;
 }
 ```
+
+# [2022. Convert 1D Array Into 2D Array](https://leetcode.com/problems/convert-1d-array-into-2d-array/description/)
+```c
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+int** construct2DArray(int* original, int originalSize, int m, int n, int* returnSize, int** returnColumnSizes) {
+        if (originalSize != m * n) {
+        *returnSize = 0;
+        *returnColumnSizes = NULL;
+        return NULL;
+    }
+    
+    int** result = (int**)malloc(m * sizeof(int*));
+    if (result == NULL) {
+        *returnSize = 0;
+        *returnColumnSizes = NULL;
+        return NULL;
+    }
+    
+    *returnColumnSizes = (int*)malloc(m * sizeof(int));
+    if (*returnColumnSizes == NULL) {
+        free(result);
+        *returnSize = 0;
+        return NULL;
+    }
+
+    for (int i = 0; i < m; i++) {
+        result[i] = (int*)malloc(n * sizeof(int));
+        if (result[i] == NULL) {
+            for (int j = 0; j < i; j++) {
+                free(result[j]);
+            }
+            free(result);
+            free(*returnColumnSizes);
+            *returnSize = 0;
+            *returnColumnSizes = NULL;
+            return NULL;
+        }
+        
+        (*returnColumnSizes)[i] = n;
+        
+        for (int j = 0; j < n; j++) {
+            result[i][j] = original[i * n + j];
+        }
+    }
+    
+    *returnSize = m;
+    
+    return result;
+}
+```
