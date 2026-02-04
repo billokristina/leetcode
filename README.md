@@ -3483,3 +3483,51 @@ int** construct2DArray(int* original, int originalSize, int m, int n, int* retur
     return result;
 }
 ```
+
+# [2347. Best Poker Hand](https://leetcode.com/problems/best-poker-hand/description/)
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* bestHand(int* ranks, int ranksSize, char* suits, int suitsSize) {
+    int is_flush = 1;
+    for (int i = 1; i < suitsSize; i++) {
+        if (suits[i] != suits[0]) {
+            is_flush = 0;
+            break;
+        }
+    }
+    if (is_flush) {
+        char* result = (char*)malloc(6 * sizeof(char));
+        strcpy(result, "Flush");
+        return result;
+    }
+    
+    int rank_count[14] = {0};
+    for (int i = 0; i < ranksSize; i++) {
+        rank_count[ranks[i]]++;
+    }
+    
+    int max_same_rank = 0;
+    for (int i = 1; i <= 13; i++) {
+        if (rank_count[i] > max_same_rank) {
+            max_same_rank = rank_count[i];
+        }
+    }
+    
+    if (max_same_rank >= 3) {
+        char* result = (char*)malloc(17 * sizeof(char));
+        strcpy(result, "Three of a Kind");
+        return result;
+    } else if (max_same_rank == 2) {
+        char* result = (char*)malloc(5 * sizeof(char));
+        strcpy(result, "Pair");
+        return result;
+    } else {
+        char* result = (char*)malloc(10 * sizeof(char));
+        strcpy(result, "High Card");
+        return result;
+    }
+}
+```
