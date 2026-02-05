@@ -3531,3 +3531,28 @@ char* bestHand(int* ranks, int ranksSize, char* suits, int suitsSize) {
     }
 }
 ```
+
+# [2269. Find the K-Beauty of a Number](https://leetcode.com/problems/find-the-k-beauty-of-a-number/description/)
+```c
+int divisorSubstrings(int num, int k) {
+    char num_str[11];
+    sprintf(num_str, "%d", num);
+    
+    int n = strlen(num_str);
+    int beauty = 0;
+    
+    for (int i = 0; i <= n - k; i++) {
+        char substr[k + 1];
+        strncpy(substr, &num_str[i], k);
+        substr[k] = '\0';
+        
+        int substr_num = atoi(substr);
+        
+        if (substr_num != 0 && num % substr_num == 0) {
+            beauty++;
+        }
+    }
+    
+    return beauty;
+}
+```
