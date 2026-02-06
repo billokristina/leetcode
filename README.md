@@ -3556,3 +3556,26 @@ int divisorSubstrings(int num, int k) {
     return beauty;
 }
 ```
+
+# [1413. Minimum Value to Get Positive Step by Step Sum](https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/description/)
+```c
+#include <stdio.h>
+
+int minStartValue(int* nums, int numsSize) {
+    int current_sum = 0;
+    
+    int min_sum = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        current_sum += nums[i];
+        
+        if (current_sum < min_sum) {
+            min_sum = current_sum;
+        }
+    }
+    
+    int startValue = 1 - min_sum;
+    
+    return startValue > 0 ? startValue : 1;
+}
+```
