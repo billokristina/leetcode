@@ -3579,3 +3579,10 @@ int minStartValue(int* nums, int numsSize) {
     return startValue > 0 ? startValue : 1;
 }
 ```
+
+# [292. Nim Game](https://leetcode.com/problems/nim-game/description/)
+```c
+bool canWinNim(int n) {
+    return n % 4 != 0;
+}
+```
