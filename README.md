@@ -3586,3 +3586,28 @@ bool canWinNim(int n) {
     return n % 4 != 0;
 }
 ```
+
+# [551. Student Attendance Record I](https://leetcode.com/problems/student-attendance-record-i/description/)
+```c
+bool checkRecord(char* s) {
+    int len = strlen(s);
+    int late = 0;
+    int absent = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (s[i] == 'A')
+            absent++;
+        if (absent >= 2)
+            return false;
+
+        if (s[i] == 'L')
+            late++;
+        else
+            late = 0;
+
+        if (late >= 3)
+            return false;
+    }
+    return true;
+}
+```
