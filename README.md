@@ -3637,3 +3637,29 @@ int areaOfMaxDiagonal(int** dimensions, int dimensionsSize, int* dimensionsColSi
     return maxArea;
 }
 ```
+
+# [1929. Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/)
+```c
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+    int* ans = (int*)malloc(2 * numsSize * sizeof(int));
+    if (ans == NULL) {
+        *returnSize = 0;
+        return NULL;
+    }
+    
+    for (int i = 0; i < numsSize; i++) {
+        ans[i] = nums[i];
+    }
+    
+    for (int i = 0; i < numsSize; i++) {
+        ans[i + numsSize] = nums[i];
+    }
+    
+    *returnSize = 2 * numsSize;
+    
+    return ans;
+}
+```
