@@ -3663,3 +3663,23 @@ int* getConcatenation(int* nums, int numsSize, int* returnSize) {
     return ans;
 }
 ```
+
+# [3550. Smallest Index With Digit Sum Equal to Index](https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index/description/)
+```c
+int smallestIndex(int *nums, int numsSize)
+{
+    for (int i = 0; i < numsSize; i++)
+    {
+        int tmp = nums[i];
+        int sum = 0;
+        while (tmp)
+        {
+            sum += tmp % 10;
+            tmp /= 10;
+        }
+        if (sum == i)
+            return i;
+    }
+    return -1;
+}
+```
