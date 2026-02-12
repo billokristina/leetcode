@@ -3683,3 +3683,35 @@ int smallestIndex(int *nums, int numsSize)
     return -1;
 }
 ```
+
+# [867. Transpose Matrix](https://leetcode.com/problems/transpose-matrix/description/)
+```c
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+int** transpose(int** matrix, int matrixSize, int* matrixColSize, int* returnSize, int** returnColumnSizes) {
+    int m = matrixSize;
+    int n = matrixColSize[0];
+    
+    *returnSize = n;
+    
+    int** result = (int**)malloc(n * sizeof(int*));
+    
+    *returnColumnSizes = (int*)malloc(n * sizeof(int));
+    
+    for (int i = 0; i < n; i++) {
+        (*returnColumnSizes)[i] = m;
+        result[i] = (int*)malloc(m * sizeof(int));
+    }
+    
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            result[j][i] = matrix[i][j];
+        }
+    }
+    
+    return result;
+}
+```
