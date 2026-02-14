@@ -3736,3 +3736,27 @@ int countTriples(int n) {
     return count;
 }
 ```
+
+# [1446. Consecutive Characters](https://leetcode.com/problems/consecutive-characters/description/)
+```c
+int maxPower(char* s) {
+    int maxPower = 0;
+    int i = 0;
+    
+    while (s[i] != '\0') {
+        char currentChar = s[i];
+        int count = 0;
+        
+        while (s[i] == currentChar && s[i] != '\0') {
+            count++;
+            i++;
+        }
+        
+        if (count > maxPower) {
+            maxPower = count;
+        }
+    }
+    
+    return maxPower;
+}
+```
