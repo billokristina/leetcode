@@ -3760,3 +3760,25 @@ int maxPower(char* s) {
     return maxPower;
 }
 ```
+
+# [2446. Determine if Two Events Have Conflict](https://leetcode.com/problems/determine-if-two-events-have-conflict/description/)
+```c
+bool haveConflict(char** event1, int event1Size, char** event2, int event2Size) {
+    int timeToMinutes(char* time) {
+        int hours = (time[0] - '0') * 10 + (time[1] - '0');
+        int minutes = (time[3] - '0') * 10 + (time[4] - '0');
+        return hours * 60 + minutes;
+    }
+    
+    int start1 = timeToMinutes(event1[0]);
+    int end1 = timeToMinutes(event1[1]);
+    int start2 = timeToMinutes(event2[0]);
+    int end2 = timeToMinutes(event2[1]);
+    
+    if (start1 <= end2 && start2 <= end1) {
+        return true;
+    }
+    
+    return false;
+}
+```
