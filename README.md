@@ -3782,3 +3782,48 @@ bool haveConflict(char** event1, int event1Size, char** event2, int event2Size) 
     return false;
 }
 ```
+
+# [3731. Find Missing Elements](https://leetcode.com/problems/find-missing-elements/description/)
+```c
+int* findMissingElements(int* nums, int numsSize, int* returnSize) {
+    *returnSize = 0;
+    
+    int freq[101] = {0};
+    
+    int min = 101;
+    int max = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] >= 1 && nums[i] <= 100) {
+            freq[nums[i]] = 1;
+            if (nums[i] < min) min = nums[i];
+            if (nums[i] > max) max = nums[i];
+        }
+    }
+    
+    for (int i = min + 1; i < max; i++) {
+        if (!freq[i]) {
+            (*returnSize)++;
+        }
+    }
+    
+    if (*returnSize == 0) {
+        return NULL;
+    }
+    
+    int* result = (int*)malloc(*returnSize * sizeof(int));
+    if (result == NULL) {
+        *returnSize = 0;
+        return NULL;
+    }
+    
+    int j = 0;
+    for (int i = min + 1; i < max; i++) {
+        if (!freq[i]) {
+            result[j++] = i;
+        }
+    }
+    
+    return result;
+}
+```
