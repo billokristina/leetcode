@@ -3827,3 +3827,18 @@ int* findMissingElements(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 ```
+
+# [3492. Maximum Containers on a Ship](https://leetcode.com/problems/maximum-containers-on-a-ship/description/)
+```c
+int maxContainers(int n, int w, int maxWeight) {
+    int totalCells = n * n;
+    
+    int maxByWeight = maxWeight / w;
+    
+    if (totalCells < maxByWeight) {
+        return totalCells;
+    } else {
+        return maxByWeight;
+    }
+}
+```
