@@ -3842,3 +3842,40 @@ int maxContainers(int n, int w, int maxWeight) {
     }
 }
 ```
+
+# [3483. Unique 3-Digit Even Numbers](https://leetcode.com/problems/unique-3-digit-even-numbers/description/)
+```c
+int totalNumbers(int* digits, int digitsSize) {
+    int available[10] = {0};
+    
+    for (int i = 0; i < digitsSize; i++) {
+        available[digits[i]]++;
+    }
+    
+    int count = 0;
+    
+    for (int last = 0; last <= 8; last += 2) {
+        if (available[last] == 0) continue;
+        
+        available[last]--;
+        
+        for (int first = 1; first <= 9; first++) {
+            if (available[first] == 0) continue;
+            
+            available[first]--;
+            
+            for (int middle = 0; middle <= 9; middle++) {
+                if (available[middle] > 0) {
+                    count++;
+                }
+            }
+            
+            available[first]++;
+        }
+        
+        available[last]++;
+    }
+    
+    return count;
+}
+```
