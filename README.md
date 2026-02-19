@@ -3879,3 +3879,34 @@ int totalNumbers(int* digits, int digitsSize) {
     return count;
 }
 ```
+
+# [2717. Semi-Ordered Permutation](https://leetcode.com/problems/semi-ordered-permutation/description/)
+```c
+int semiOrderedPermutation(int* nums, int numsSize) {
+    int pos1 = -1;
+    int posN = -1;
+    
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] == 1) {
+            pos1 = i;
+        }
+        if (nums[i] == numsSize) {
+            posN = i;
+        }
+    }
+    
+    if (pos1 == 0 && posN == numsSize - 1) {
+        return 0;
+    }
+    
+    int operations = pos1;
+    
+    operations += (numsSize - 1 - posN);
+    
+    if (pos1 > posN) {
+        operations--;
+    }
+    
+    return operations;
+}
+```
