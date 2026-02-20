@@ -3929,3 +3929,24 @@ int countAsterisks(char* s) {
     return count;
 }
 ```
+
+# [2490. Circular Sentence](https://leetcode.com/problems/circular-sentence/description/)
+```c
+bool isCircularSentence(char* sentence) {
+    int len = strlen(sentence);
+    
+    if (sentence[0] != sentence[len - 1]) {
+        return false;
+    }
+    
+    for (int i = 0; i < len; i++) {
+        if (sentence[i] == ' ') {
+            if (sentence[i - 1] != sentence[i + 1]) {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+}
+```
