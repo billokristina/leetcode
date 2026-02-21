@@ -3950,3 +3950,21 @@ bool isCircularSentence(char* sentence) {
     return true;
 }
 ```
+
+# [2124. Check if All A's Appears Before All B's](https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/description/)
+```c
+bool checkString(char* s) {
+    bool foundB = false;
+    
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == 'b') {
+            foundB = true;
+        }
+        else if (s[i] == 'a' && foundB) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+```
