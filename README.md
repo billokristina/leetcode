@@ -3968,3 +3968,47 @@ bool checkString(char* s) {
     return true;
 }
 ```
+
+# [1417. Reformat The String](https://leetcode.com/problems/reformat-the-string/description/)
+```c
+char* reformat(char* s) {
+    int len = strlen(s);
+    
+    int letters = 0, digits = 0;
+    for (int i = 0; i < len; i++) {
+        if (isalpha(s[i])) {
+            letters++;
+        } else {
+            digits++;
+        }
+    }
+    
+    if (abs(letters - digits) > 1) {
+        return "";
+    }
+    
+    char* result = (char*)malloc((len + 1) * sizeof(char));
+    int letterIndex, digitIndex;
+    
+    if (letters >= digits) {
+        letterIndex = 0;
+        digitIndex = 1;
+    } else {
+        letterIndex = 1;
+        digitIndex = 0;
+    }
+    
+    for (int i = 0; i < len; i++) {
+        if (isalpha(s[i])) {
+            result[letterIndex] = s[i];
+            letterIndex += 2;
+        } else {
+            result[digitIndex] = s[i];
+            digitIndex += 2;
+        }
+    }
+    
+    result[len] = '\0';
+    return result;
+}
+```
