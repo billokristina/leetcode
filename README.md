@@ -4042,3 +4042,24 @@ int countConsistentStrings(char * allowed, char ** words, int wordsSize) {
     return consistentCount;
 }
 ```
+
+# [1480. Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/description/)
+```c
+int* runningSum(int* nums, int numsSize, int* returnSize) {
+    *returnSize = numsSize;
+    
+    int* result = (int*)malloc(numsSize * sizeof(int));
+    
+    if (result == NULL) {
+        return NULL;
+    }
+    
+    result[0] = nums[0];
+    
+    for (int i = 1; i < numsSize; i++) {
+        result[i] = result[i-1] + nums[i];
+    }
+    
+    return result;
+}
+```
