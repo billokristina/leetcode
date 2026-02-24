@@ -4063,3 +4063,31 @@ int* runningSum(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 ```
+
+# [2609. Find the Longest Balanced Substring of a Binary String](https://leetcode.com/problems/find-the-longest-balanced-substring-of-a-binary-string/description/)
+```c
+int findTheLongestBalancedSubstring(char* s) {
+    int maxLen = 0;
+    int i = 0;
+    int len = strlen(s);
+    
+    while (i < len) {
+        int zeros = 0, ones = 0;
+        
+        while (i < len && s[i] == '0') {
+            zeros++;
+            i++;
+        }
+        
+        while (i < len && s[i] == '1') {
+            ones++;
+            i++;
+        }
+        
+        maxLen = (maxLen > 2 * (zeros < ones ? zeros : ones)) ? 
+                  maxLen : 2 * (zeros < ones ? zeros : ones);
+    }
+    
+    return maxLen;
+}
+```
