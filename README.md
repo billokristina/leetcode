@@ -4112,3 +4112,28 @@ int countQuadruplets(int* nums, int numsSize) {
     return count;
 }
 ```
+
+# [2485. Find the Pivot Integer](https://leetcode.com/problems/find-the-pivot-integer/description/)
+```c
+int pivotInteger(int n) {
+    // Вычисляем общую сумму от 1 до n
+    int totalSum = n * (n + 1) / 2;
+    
+    // Ищем опорное целое число x
+    for (int x = 1; x <= n; x++) {
+        // Сумма от 1 до x
+        int leftSum = x * (x + 1) / 2;
+        
+        // Сумма от x до n = общая сумма - сумма от 1 до (x-1)
+        int rightSum = totalSum - (x - 1) * x / 2;
+        
+        // Если суммы равны, нашли опорное число
+        if (leftSum == rightSum) {
+            return x;
+        }
+    }
+    
+    // Если не нашли, возвращаем -1
+    return -1;
+}
+```
