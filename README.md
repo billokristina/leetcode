@@ -4137,3 +4137,27 @@ int pivotInteger(int n) {
     return -1;
 }
 ```
+
+# [2937. Make Three Strings Equal](https://leetcode.com/problems/make-three-strings-equal/description/)
+```c
+int findMinimumOperations(char* s1, char* s2, char* s3) {
+    int len1 = strlen(s1);
+    int len2 = strlen(s2);
+    int len3 = strlen(s3);
+    
+    int commonLength = 0;
+    while (commonLength < len1 && commonLength < len2 && commonLength < len3) {
+        if (s1[commonLength] == s2[commonLength] && s2[commonLength] == s3[commonLength]) {
+            commonLength++;
+        } else {
+            break;
+        }
+    }
+    
+    if (commonLength == 0) {
+        return -1;
+    }
+    
+    return (len1 - commonLength) + (len2 - commonLength) + (len3 - commonLength);
+}
+```
