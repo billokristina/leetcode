@@ -4161,3 +4161,26 @@ int findMinimumOperations(char* s1, char* s2, char* s3) {
     return (len1 - commonLength) + (len2 - commonLength) + (len3 - commonLength);
 }
 ```
+
+# [674. Longest Continuous Increasing Subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence/description/)
+```c
+int findLengthOfLCIS(int* nums, int numsSize) {
+    if (numsSize == 0) return 0;
+    
+    int maxLen = 1;
+    int currentLen = 1;
+    
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] > nums[i - 1]) {
+            currentLen++;
+            if (currentLen > maxLen) {
+                maxLen = currentLen;
+            }
+        } else {
+            currentLen = 1;
+        }
+    }
+    
+    return maxLen;
+}
+```
