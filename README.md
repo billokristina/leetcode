@@ -4184,3 +4184,23 @@ int findLengthOfLCIS(int* nums, int numsSize) {
     return maxLen;
 }
 ```
+
+# [771. Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/description/)
+```c
+int numJewelsInStones(char* jewels, char* stones) {
+    int count = 0;
+    int jewelMap[58] = {0};
+    
+    for (int i = 0; jewels[i] != '\0'; i++) {
+        jewelMap[jewels[i] - 'A'] = 1;
+    }
+    
+    for (int i = 0; stones[i] != '\0'; i++) {
+        if (jewelMap[stones[i] - 'A'] == 1) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+```
