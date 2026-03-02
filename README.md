@@ -4204,3 +4204,23 @@ int numJewelsInStones(char* jewels, char* stones) {
     return count;
 }
 ```
+
+# [1716. Calculate Money in Leetcode Bank](https://leetcode.com/problems/calculate-money-in-leetcode-bank/description/)
+```c
+int totalMoney(int n) {
+    int total = 0;
+    int week = 0;
+    int day = 1;
+    
+    while (day <= n) {
+        week++;
+        
+        for (int i = 0; i < 7 && day <= n; i++) {
+            total += week + i;
+            day++;
+        }
+    }
+    
+    return total;
+}
+```
