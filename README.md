@@ -4294,3 +4294,44 @@ int balancedStringSplit(char* s) {
     return result;
 }
 ```
+
+# [2748. Number of Beautiful Pairs](https://leetcode.com/problems/number-of-beautiful-pairs/description/)
+```c
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int getFirstDigit(int num) {
+    while (num >= 10) {
+        num /= 10;
+    }
+    return num;
+}
+
+int getLastDigit(int num) {
+    return num % 10;
+}
+
+int countBeautifulPairs(int* nums, int numsSize) {
+    int count = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        int firstDigit = getFirstDigit(nums[i]);
+        
+        for (int j = i + 1; j < numsSize; j++) {
+            int lastDigit = getLastDigit(nums[j]);
+            
+            if (gcd(firstDigit, lastDigit) == 1) {
+                count++;
+            }
+        }
+    }
+    
+    return count;
+}
+```
