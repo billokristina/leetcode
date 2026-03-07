@@ -4335,3 +4335,30 @@ int countBeautifulPairs(int* nums, int numsSize) {
     return count;
 }
 ```
+
+# [796. Rotate String](https://leetcode.com/problems/rotate-string/description/)
+```c
+bool rotateString(char* s, char* goal) {
+    int len_s = strlen(s);
+    int len_goal = strlen(goal);
+    
+    if (len_s != len_goal) {
+        return false;
+    }
+    
+    if (len_s == 0) {
+        return true;
+    }
+    
+    char* doubled = (char*)malloc(2 * len_s + 1);
+    if (!doubled) return false;
+    
+    strcpy(doubled, s);
+    strcat(doubled, s);
+    
+    bool result = (strstr(doubled, goal) != NULL);
+    
+    free(doubled);
+    return result;
+}
+```
