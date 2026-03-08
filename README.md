@@ -4362,3 +4362,26 @@ bool rotateString(char* s, char* goal) {
     return result;
 }
 ```
+
+# [2180. Count Integers With Even Digit Sum](https://leetcode.com/problems/count-integers-with-even-digit-sum/description/)
+```c
+int countEven(int num) {
+    int count = 0;
+    
+    for (int i = 1; i <= num; i++) {
+        int sum = 0;
+        int n = i;
+        
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        
+        if (sum % 2 == 0) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+```
