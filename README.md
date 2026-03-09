@@ -4385,3 +4385,26 @@ int countEven(int num) {
     return count;
 }
 ```
+
+# [3668. Restore Finishing Order](https://leetcode.com/problems/restore-finishing-order/description/)
+```c
+int* recoverOrder(int* order, int orderSize, int* friends, int friendsSize, int* returnSize) {
+    int* result = (int*)malloc(friendsSize * sizeof(int));
+    if (!result) return NULL;
+    
+    *returnSize = 0;
+    
+    for (int i = 0; i < orderSize; i++) {
+        int currentID = order[i];
+        
+        for (int j = 0; j < friendsSize; j++) {
+            if (friends[j] == currentID) {
+                result[(*returnSize)++] = currentID;
+                break;
+            }
+        }
+    }
+    
+    return result;
+}
+```
