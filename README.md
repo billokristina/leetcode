@@ -4423,3 +4423,26 @@ int numOfStrings(char** patterns, int patternsSize, char* word) {
     return count;
 }
 ```
+
+# [1832. Check if the Sentence Is Pangram](https://leetcode.com/problems/check-if-the-sentence-is-pangram/description/)
+```c
+bool checkIfPangram(char* sentence) {
+    int seen[26] = {0};
+    int count = 0;
+    
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        int index = sentence[i] - 'a';
+        
+        if (seen[index] == 0) {
+            seen[index] = 1;
+            count++;
+        }
+        
+        if (count == 26) {
+            return true;
+        }
+    }
+    
+    return count == 26;
+}
+```
