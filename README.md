@@ -4446,3 +4446,33 @@ bool checkIfPangram(char* sentence) {
     return count == 26;
 }
 ```
+
+# [3798. Largest Even Number](https://leetcode.com/problems/largest-even-number/description/)
+```c
+char* largestEven(char* s) {
+    int len = strlen(s);
+    char* result = (char*)malloc((len + 1) * sizeof(char));
+    int resultIndex = 0;
+    
+    int lastTwoIndex = -1;
+    for (int i = 0; i < len; i++) {
+        if (s[i] == '2') {
+            lastTwoIndex = i;
+        }
+    }
+    
+    if (lastTwoIndex == -1) {
+        free(result);
+        return strdup("");
+    }
+    
+    for (int i = 0; i < len; i++) {
+        if (i <= lastTwoIndex) {
+            result[resultIndex++] = s[i];
+        }
+    }
+    
+    result[resultIndex] = '\0';
+    return result;
+}
+```
