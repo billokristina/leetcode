@@ -4476,3 +4476,31 @@ char* largestEven(char* s) {
     return result;
 }
 ```
+
+# [997. Find the Town Judge](https://leetcode.com/problems/find-the-town-judge/description/)
+```c
+int findJudge(int n, int** trust, int trustSize, int* trustColSize) {
+    int* trustCount = (int*)calloc(n + 1, sizeof(int));
+    int* trustedBy = (int*)calloc(n + 1, sizeof(int));
+    
+    for (int i = 0; i < trustSize; i++) {
+        int a = trust[i][0];
+        int b = trust[i][1];
+        
+        trustedBy[a]++;
+        trustCount[b]++;
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        if (trustedBy[i] == 0 && trustCount[i] == n - 1) {
+            free(trustCount);
+            free(trustedBy);
+            return i;
+        }
+    }
+    
+    free(trustCount);
+    free(trustedBy);
+    return -1;
+}
+```
