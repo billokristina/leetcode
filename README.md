@@ -4504,3 +4504,32 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize) {
     return -1;
 }
 ```
+
+# [3095. Shortest Subarray With OR at Least K I](https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-i/description/)
+```c
+int minimumSubarrayLength(int* nums, int numsSize, int k) {
+    int minLength = numsSize + 1;
+    
+    if (k == 0) {
+        return 1;
+    }
+    
+    for (int i = 0; i < numsSize; i++) {
+        int currentOR = 0;
+        
+        for (int j = i; j < numsSize; j++) {
+            currentOR |= nums[j];
+            
+            if (currentOR >= k) {
+                int length = j - i + 1;
+                if (length < minLength) {
+                    minLength = length;
+                }
+                break;
+            }
+        }
+    }
+    
+    return (minLength <= numsSize) ? minLength : -1;
+}
+```
