@@ -4548,3 +4548,37 @@ int minBitFlips(int start, int goal) {
     return count;
 }
 ```
+
+# [2566. Maximum Difference by Remapping a Digit](https://leetcode.com/problems/maximum-difference-by-remapping-a-digit/description/)
+```c
+int minMaxDifference(int num) {
+    int maxNum = num;
+    int minNum = num;
+    
+    for (int fromDigit = 0; fromDigit <= 9; fromDigit++) {
+        for (int toDigit = 0; toDigit <= 9; toDigit++) {
+            if (fromDigit == toDigit) continue;
+            
+            int temp = num;
+            int result = 0;
+            int multiplier = 1;
+            
+            while (temp > 0) {
+                int digit = temp % 10;
+                if (digit == fromDigit) {
+                    result += toDigit * multiplier;
+                } else {
+                    result += digit * multiplier;
+                }
+                multiplier *= 10;
+                temp /= 10;
+            }
+            
+            if (result > maxNum) maxNum = result;
+            if (result < minNum) minNum = result;
+        }
+    }
+    
+    return maxNum - minNum;
+}
+```
